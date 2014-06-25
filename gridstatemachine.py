@@ -104,3 +104,38 @@ def buildConnectionDisplayTable(dat):
 	for conn in sm.current.connections.values():
 		targetprops = conn.target.props
 		dat.appendRow(srcpos + (targetprops['rawx'], targetprops['rawy'], targetprops['rawz']))
+
+def loadEnvironmentPoints(pointsGRP, pointtbl, scaling):
+	pointtbl.clear()
+	pointtbl.appendRow(["name", "gridx", "gridy", "gridz", "rawx", "rawy", "rawz", "path"])
+	for obj in pointsGRP.children:
+		if obj.type == 'null':
+			pointtbl.appendRow([
+				obj.name,
+				int(obj.par.tx / scaling),
+				int(obj.par.ty / scaling),
+				int(obj.par.tz / scaling),
+				obj.par.tx,
+				obj.par.ty,
+				obj.par.tz,
+				obj.path
+			])
+
+def buildPointLookup(pointtbl):
+	out = {}
+	for r in range(1, pointtbl.numRows):
+		out[(pointtbl[r, 'rawx'], pointtbl[r, 'rawy'], pointtbl[r, 'rawz'])] = tekt.rowToDict(pointtbl.row(r))
+	return out
+
+def loadEnvironmentConnections(connectionsGRP, conntbl, pointtbl):
+	conntbl.clear()
+	conntbl.appendRow(['source', 'target'])
+	pointlookup = buildPointLookup(pointtbl)
+	for obj in connectionsGRP.children:
+		if obj.type != 'geo':
+			continue
+		mesh = obj.op('mesh')
+		if mesh is None:
+			continue
+
+
