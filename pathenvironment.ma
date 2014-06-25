@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Wed, Jun 25, 2014 04:34:13 PM
+//Last modified: Wed, Jun 25, 2014 04:38:27 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,8 +89,8 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -108.81735203421012 112.26812205243176 -68.525943773887391 ;
-	setAttr ".r" -type "double3" -41.121846624811987 237.79999999998032 0 ;
+	setAttr ".t" -type "double3" -103.20706354341962 108.17341556264134 -82.389116412758653 ;
+	setAttr ".r" -type "double3" -39.321846624809858 231.39999999997863 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
