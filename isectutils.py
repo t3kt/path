@@ -7,21 +7,22 @@ def getLabel(ptnum, tbl):
 	]
 	return '\n'.join(parts)
 
-def buildIntersectionTable(dat, grp, scaling):
+def buildIntersectionTable(dat, groups, scaling):
 	dat.clear()
 	dat.appendRow(["name", "gridx", "gridy", "gridz", "rawx", "rawy", "rawz", "path"])
-	for obj in grp.children:
-		if obj.type == 'null':
-			dat.appendRow([
-				obj.name,
-				int(obj.par.tx / scaling),
-				int(obj.par.ty / scaling),
-				int(obj.par.tz / scaling),
-				obj.par.tx,
-				obj.par.ty,
-				obj.par.tz,
-				obj.path
-			])
+	for group in groups:
+		for obj in group.children:
+			if obj.type == 'null':
+				dat.appendRow([
+					obj.name,
+					int(obj.par.tx / scaling),
+					int(obj.par.ty / scaling),
+					int(obj.par.tz / scaling),
+					obj.par.tx,
+					obj.par.ty,
+					obj.par.tz,
+					obj.path
+				])
 
 neighborOffsets = (
 	(-1, 0, 0),

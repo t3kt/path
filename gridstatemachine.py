@@ -1,18 +1,18 @@
 import tekt
+import statemachines
+from statemachines import dbglog
 
 smachine = None
-
 
 def init(force=False):
 	global smachine
 	smachine = me.fetch('smachine', None)
-	print('existing state machine found: %s' % (smachine is not None, ))
+	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
-		smachine = mod.statemachines.StateMachine(statetbl=op('intersectiontbl'), conntbl=op('connectiontbl'))
-		print('loading new state machine')
-	# me.store('smachine', smachine)
+		smachine = statemachines.StateMachine(statetbl=op('intersectiontbl'), conntbl=op('connectiontbl'))
+		dbglog('loading new state machine')
 	me.storeStartupValue('smachine', smachine)
-	print('putting states in storage (%s)' % (', '.join(smachine.states.keys()),))
+	dbglog('putting states in storage (%s)' % (', '.join(smachine.states.keys()),))
 	for state in smachine.states.values():
 		me.store(state.name, state)
 
@@ -28,7 +28,7 @@ def get(check=False):
 
 def setCurrent(name):
 	sm = get(check=True)
-	print('trying to set state to "%s"' % (name,))
+	dbglog('trying to set state to "%s"' % (name,))
 	state = sm.setCurrent(name=name)
 	me.store('current', state.props if state is not None else None)
 	me.cook(force=True)
@@ -38,10 +38,10 @@ def pickRandomConnection():
 	sm = get(check=True)
 	nextConn = sm.pickRandomConnection()
 	if nextConn is None:
-		print('unable to pick a connection')
+		dbglog('unable to pick a connection')
 	else:
 		me.cook(force=True)
-		print('picked connection to "%s"' % (nextConn.target.name,))
+		dbglog('picked connection to "%s"' % (nextConn.target.name,))
 
 
 def buildCurrentStateTable(dat):

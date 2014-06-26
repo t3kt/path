@@ -3,6 +3,12 @@ import tekt
 import random
 import json
 
+loggingEnabled = False
+
+def dbglog(msg):
+	if loggingEnabled:
+		print(msg)
+
 class State:
 	def __init__(self, props):
 		"""
@@ -84,7 +90,7 @@ class StateMachine:
 		if state is None:
 			state = self.getState(name, check=check)
 		self.current = state
-		print('state set to "%s"' % (state.name,))
+		dbglog('state set to "%s"' % (state.name,))
 		return state
 
 	def getConnections(self):
@@ -98,7 +104,7 @@ class StateMachine:
 	def pickRandomConnection(self):
 		conns = self.getConnections()
 		if len(conns) == 0:
-			print('no connections found for the current state')
+			dbglog('no connections found for the current state')
 			return None
 		nextConn = random.choice(conns)
 		if nextConn is None:
