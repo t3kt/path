@@ -1,6 +1,6 @@
 import tekt
 import statemachines
-from statemachines import dbglog
+from statemachines import Connection, State, dbglog
 
 smachine = None
 
@@ -105,37 +105,67 @@ def buildConnectionDisplayTable(dat):
 		targetprops = conn.target.props
 		dat.appendRow(srcpos + (targetprops['rawx'], targetprops['rawy'], targetprops['rawz']))
 
-def loadEnvironmentPoints(pointsGRP, pointtbl, scaling):
-	pointtbl.clear()
-	pointtbl.appendRow(["name", "gridx", "gridy", "gridz", "rawx", "rawy", "rawz", "path"])
-	for obj in pointsGRP.children:
-		if obj.type == 'null':
-			pointtbl.appendRow([
-				obj.name,
-				int(obj.par.tx / scaling),
-				int(obj.par.ty / scaling),
-				int(obj.par.tz / scaling),
-				obj.par.tx,
-				obj.par.ty,
-				obj.par.tz,
-				obj.path
-			])
+#####
+#	load all the state points into a dict( name   -> state )
+#	load all the state points into a dict( coords -> state )
+#	for each connection point:
+#		for each axis:
+#			if there are state points at +scaling and -scaling
+#				add a connection between them
+#####
 
-def buildPointLookup(pointtbl):
-	out = {}
-	for r in range(1, pointtbl.numRows):
-		out[(pointtbl[r, 'rawx'], pointtbl[r, 'rawy'], pointtbl[r, 'rawz'])] = tekt.rowToDict(pointtbl.row(r))
-	return out
+def _tupleAdd(a, b):
+	return [x[0] + x[1] for x in zip(a, b)]
 
-def loadEnvironmentConnections(connectionsGRP, conntbl, pointtbl):
-	conntbl.clear()
-	conntbl.appendRow(['source', 'target'])
-	pointlookup = buildPointLookup(pointtbl)
-	for obj in connectionsGRP.children:
-		if obj.type != 'geo':
+def _tupleMult(a, b):
+	return [x[0] * x[1] for x in zip(a, b)]
+
+def fooLoad(pointObjs, connectionObjs, scaling):
+	states = {}
+	pointLookup = {}
+	for obj in pointObjs:
+		if obj.type != 'null':
 			continue
-		mesh = obj.op('mesh')
-		if mesh is None:
+		state = State({
+			'name': obj.name,
+			'gridx': int(obj.par.tx / scaling),
+			'gridy': int(obj.par.ty / scaling),
+			'gridz': int(obj.par.tz / scaling),
+			'rawx': obj.par.tx,
+			'rawy': obj.par.ty,
+			'rawz': obj.par.tz
+		})
+		states[state.name] = state
+		pointLookup[(obj.par.tx, obj.par.ty, obj.par.tz)] = state
+	halfScale = scaling / 2
+	axes = (
+		((-halfScale, 0, 0), (halfScale, 0, 0)),
+		((0, -halfScale, 0), (0, halfScale, 0, 0)),
+		((0, 0, -halfScale), (0, 0, halfScale))
+	)
+	for obj in connectionObjs:
+		if obj.type != 'null':
 			continue
+		connpos = (obj.par.tx, obj.par.ty, obj.par.tz)
+		for axis in axes:
+			stateA = pointLookup.get(_tupleAdd(axis[0], connpos), None)
+			if stateA is None:
+				continue
+			stateB = pointLookup.get(_tupleAdd(axis[1], connpos), None)
+			if stateB is None:
+				continue
+			connAB = Connection(stateA, stateB, {})
+			connBA = Connection(stateB, stateA, {})
+			stateA.addConnection(connAB)
+			stateB.addConnection(connBA)
 
+def dumpToTables(states, pointsTbl, connectionsTbl):
+	pointsTbl.clear()
+	pointsTbl.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
+	connectionsTbl.clear()
+	connectionsTbl.appendRow(['source', 'target'])
+	for state in states.values():
+		tekt.appendDictRow(pointsTbl, state.props)
+		for connection in state.connections.values():
+			connectionsTbl.appendRow([connection.source.name, connection.target.name])
 

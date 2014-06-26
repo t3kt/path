@@ -41,7 +41,7 @@ class Connection:
 		"""
 		self.source = source
 		self.target = target
-		self.props = props
+		self.props = props if props else {}
 
 	def __repr__(self):
 		return "Connection(%s -> %s)" % (self.source.name, self.target.name)
