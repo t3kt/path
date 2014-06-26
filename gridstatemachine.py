@@ -11,7 +11,17 @@ def init(force=False):
 	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
 		dbglog('loading new state machine')
-		smachine = sm = statemachines.StateMachine(statetbl=op('intersectiontbl'), conntbl=op('connectiontbl'))
+		settings = op("define")
+		pointgroups = ops(settings['pointgrouppath', 1].val)
+		conngroups = ops(settings['connectgrouppath', 1].val)
+		scaling = float(settings["scaling", 1].val)
+		states = loadEnvironmentStates(pointgroups, conngroups, scaling)
+		dumpToTables(states, op('intersectiontbl'), op('connectiontbl'))
+		if len(states) > 0:
+			startName = list(states.keys())[0]
+		else:
+			startName = None
+		smachine = sm = statemachines.StateMachine(states=states, startName=startName)
 		me.unstoreStartupValue('*')
 		me.unstore('*')
 	me.storeStartupValue('smachine', sm)
@@ -120,49 +130,52 @@ def buildConnectionDisplayTable(dat):
 #####
 
 def _tupleAdd(a, b):
-	return [x[0] + x[1] for x in zip(a, b)]
+	return tuple(x[0] + x[1] for x in zip(a, b))
 
 def _tupleMult(a, b):
-	return [x[0] * x[1] for x in zip(a, b)]
+	return tuple(x[0] * x[1] for x in zip(a, b))
 
-def fooLoad(pointObjs, connectionObjs, scaling):
+def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 	states = {}
 	pointLookup = {}
-	for obj in pointObjs:
-		if obj.type != 'null':
-			continue
-		state = State({
-			'name': obj.name,
-			'gridx': int(obj.par.tx / scaling),
-			'gridy': int(obj.par.ty / scaling),
-			'gridz': int(obj.par.tz / scaling),
-			'rawx': obj.par.tx,
-			'rawy': obj.par.ty,
-			'rawz': obj.par.tz
-		})
-		states[state.name] = state
-		pointLookup[(obj.par.tx, obj.par.ty, obj.par.tz)] = state
-	halfScale = scaling / 2
-	axes = (
-		((-halfScale, 0, 0), (halfScale, 0, 0)),
-		((0, -halfScale, 0), (0, halfScale, 0, 0)),
-		((0, 0, -halfScale), (0, 0, halfScale))
-	)
-	for obj in connectionObjs:
-		if obj.type != 'null':
-			continue
-		connpos = (obj.par.tx, obj.par.ty, obj.par.tz)
-		for axis in axes:
-			stateA = pointLookup.get(_tupleAdd(axis[0], connpos), None)
-			if stateA is None:
+	for ptGroup in pointGroups:
+		for obj in ptGroup.children:
+			if obj.type != 'null':
 				continue
-			stateB = pointLookup.get(_tupleAdd(axis[1], connpos), None)
-			if stateB is None:
+			state = State({
+				'name': obj.name,
+				'gridx': int(obj.par.tx / scaling),
+				'gridy': int(obj.par.ty / scaling),
+				'gridz': int(obj.par.tz / scaling),
+				'rawx': obj.par.tx.val,
+				'rawy': obj.par.ty.val,
+				'rawz': obj.par.tz.val
+			})
+			states[state.name] = state
+			pointLookup[(obj.par.tx.val, obj.par.ty.val, obj.par.tz.val)] = state
+		halfScale = scaling / 2
+		axes = (
+			((-halfScale, 0, 0), (halfScale, 0, 0)),
+			((0, -halfScale, 0), (0, halfScale, 0, 0)),
+			((0, 0, -halfScale), (0, 0, halfScale))
+		)
+	for conGroup in connectionGroups:
+		for obj in conGroup.children:
+			if obj.type != 'null':
 				continue
-			connAB = Connection(stateA, stateB, {})
-			connBA = Connection(stateB, stateA, {})
-			stateA.addConnection(connAB)
-			stateB.addConnection(connBA)
+			connpos = (obj.par.tx.val, obj.par.ty.val, obj.par.tz.val)
+			for axis in axes:
+				stateA = pointLookup.get(_tupleAdd(axis[0], connpos), None)
+				if stateA is None:
+					continue
+				stateB = pointLookup.get(_tupleAdd(axis[1], connpos), None)
+				if stateB is None:
+					continue
+				connAB = Connection(stateA, stateB, {})
+				connBA = Connection(stateB, stateA, {})
+				stateA.addConnection(connAB)
+				stateB.addConnection(connBA)
+	return states
 
 def dumpToTables(states, pointsTbl, connectionsTbl):
 	pointsTbl.clear()
