@@ -2,6 +2,7 @@ __author__ = 'tekt'
 import tekt
 import random
 import json
+from abc import abstractmethod, ABCMeta
 
 loggingEnabled = False
 
@@ -47,7 +48,7 @@ class Connection:
 		return "Connection(%s -> %s)" % (self.source.name, self.target.name)
 
 class StateMachine:
-	def __init__(self, states=None, startName=None):
+	def __init__(self, states: dict=None, startName: str=None, chooser=None):
 		"""
 		:type states dict
 		:type startName str
@@ -57,6 +58,7 @@ class StateMachine:
 		self.current = None
 		if startName is not None:
 			self.setCurrent(name=startName)
+		self.chooser = chooser
 
 	def getState(self, name, check=False):
 		state = self.states[name]
@@ -83,16 +85,30 @@ class StateMachine:
 	def getConnectionTargetNames(self):
 		return [c.target.name for c in self.getConnections()]
 
-	def pickRandomConnection(self):
+	def setChooser(self, chooser):
+		if chooser is None:
+			self.chooser = None
+		else:
+			self.chooser = chooser
+			chooser.attach(self)
+
+	def chooseNext(self):
+		if self.current is None:
+			return None
 		conns = self.getConnections()
 		if len(conns) == 0:
-			dbglog('no connections found for the current state')
 			return None
-		nextConn = random.choice(conns)
-		if nextConn is None:
+		if self.chooser is None:
+			c = random.choice(conns)
+			return None if c is None else c.target
+		return self.chooser.chooseNext(self.current, conns)
+
+	def followNext(self):
+		nextState = self.chooseNext()
+		if nextState is None:
 			return None
-		self.setCurrent(state=nextConn.target)
-		return nextConn
+		self.setCurrent(state=nextState)
+		return nextState
 
 	def __repr__(self):
 		return 'StateMachine( current: %s )' % (self.current,)
@@ -106,4 +122,41 @@ class StateMachine:
 		d = self.toJsonDict()
 		return json.dumps(d, sort_keys=True, indent=4)
 
+class Chooser(metaclass=ABCMeta):
+	def __init__(self):
+		self.smachine = None
 
+	def attach(self, smachine: StateMachine):
+		self.smachine = smachine
+
+	@abstractmethod
+	def chooseNext(self, currentState: State, connections: list) -> State:
+		pass
+
+
+class RandomChooser(Chooser):
+	def __init__(self):
+		super().__init__()
+
+	def chooseNext(self, currentState: State, connections: list):
+		return random.choice(connections)
+
+class NoRepeatChooser(RandomChooser):
+	def __init__(self):
+		super().__init__()
+		self.previous = None
+
+	def attach(self, smachine: StateMachine):
+		Chooser.attach(self, smachine)
+		self.previous = smachine.current
+
+	def chooseNext(self, currentState: State, connections: list) -> State:
+		prev = self.previous
+		self.previous = currentState
+		if prev is None:
+			return RandomChooser.chooseNext(self, currentState, connections)
+		if len(connections) == 1:
+			return connections[0].target
+		conns = list(c for c in connections if c.target != prev)
+		nc = RandomChooser.chooseNext(self, currentState, conns)
+		return None if nc is None else nc.target

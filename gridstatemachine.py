@@ -4,6 +4,7 @@ from statemachines import Connection, State, dbglog
 import td
 
 smachine = None
+schooser = None
 
 def init(force=False):
 	global smachine
@@ -49,14 +50,26 @@ def setCurrent(name):
 	me.cook(force=True)
 
 
-def pickRandomConnection():
+def followNext():
 	sm = get(check=True)
-	nextConn = sm.pickRandomConnection()
-	if nextConn is None:
+	nextState = sm.followNext()
+	if nextState is None:
 		dbglog('unable to pick a connection')
 	else:
 		me.cook(force=True)
-		dbglog('picked connection to "%s"' % (nextConn.target.name,))
+		dbglog('picked connection to "%s"' % (nextState.name,))
+
+
+def setNoRepeat(norepeat):
+	global schooser
+	sm = get()
+	if norepeat:
+		schooser = statemachines.NoRepeatChooser()
+	else:
+		schooser = statemachines.RandomChooser()
+	if sm is None:
+		return
+	sm.setChooser(schooser)
 
 
 def buildCurrentStateTable(dat):
