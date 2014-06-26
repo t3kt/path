@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Thu, Jun 26, 2014 01:25:19 PM
+//Last modified: Thu, Jun 26, 2014 02:02:41 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,14 +89,14 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 324.10025844922808 177.74153129224879 162.29731976060913 ;
-	setAttr ".r" -type "double3" -26.121846625285276 63.399999999990385 -3.5516361005806251e-015 ;
+	setAttr ".t" -type "double3" 242.65847028654565 200.15020979465234 253.0419131125721 ;
+	setAttr ".r" -type "double3" -29.72184662510826 403.80000000000376 0 ;
 	setAttr ".rp" -type "double3" -2.7935383076216873e-015 -2.450511644709734e-016 0 ;
 	setAttr ".rpt" -type "double3" -2.072792752523917e-013 5.3364675479176849e-014 1.2549301805522251e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 403.69970209852227;
+	setAttr ".coi" 403.69970209840449;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -23092,7 +23092,6 @@ createNode displayLayer -n "envOuterLayer";
 	setAttr ".do" 6;
 createNode displayLayer -n "envInnerWireLayer";
 	setAttr ".dt" 1;
-	setAttr ".v" no;
 	setAttr ".do" 9;
 createNode groupId -n "groupId33";
 	setAttr ".ihi" 0;
@@ -23128,7 +23127,6 @@ createNode displayLayer -n "connectionsMidLayer";
 	setAttr ".v" no;
 	setAttr ".do" 1;
 createNode displayLayer -n "envInnerLayer";
-	setAttr ".dt" 1;
 	setAttr ".do" 10;
 createNode groupId -n "groupId50";
 	setAttr ".ihi" 0;
@@ -23150,10 +23148,8 @@ createNode groupId -n "groupId62";
 	setAttr ".ihi" 0;
 createNode displayLayer -n "envMidWireLayer";
 	setAttr ".dt" 1;
-	setAttr ".v" no;
 	setAttr ".do" 7;
 createNode displayLayer -n "envOuterWireLayer";
-	setAttr ".v" no;
 	setAttr ".do" 5;
 createNode surfaceShader -n "surfaceShader2";
 	setAttr ".oc" -type "float3" 0.42105746 0.42105746 0.42105746 ;

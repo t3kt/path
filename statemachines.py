@@ -46,30 +46,12 @@ class Connection:
 	def __repr__(self):
 		return "Connection(%s -> %s)" % (self.source.name, self.target.name)
 
-def loadTables(statetbl, conntbl):
-	states = {}
-	for srow in tekt.rowsToDicts(statetbl):
-		state = State(srow)
-		states[state.name] = state
-	for crow in tekt.rowsToDicts(conntbl):
-		source = states[crow['source']]
-		target = states[crow['target']]
-		if source is None:
-			raise Exception('State not found: ' + crow['source'])
-		if target is None:
-			raise Exception('State not found: ' + crow['target'])
-		conn = Connection(source, target, crow)
-		source.addConnection(conn)
-	return states
-
 class StateMachine:
-	def __init__(self, states=None, statetbl=None, conntbl=None, startName=None):
+	def __init__(self, states=None, startName=None):
 		"""
 		:type states dict
 		:type startName str
 		"""
-		if states is None:
-			states = loadTables(statetbl, conntbl)
 		self.states = states
 		""" :type State """
 		self.current = None
