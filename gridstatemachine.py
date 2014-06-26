@@ -1,20 +1,25 @@
 import tekt
 import statemachines
 from statemachines import Connection, State, dbglog
+import td
 
 smachine = None
 
 def init(force=False):
 	global smachine
-	smachine = me.fetch('smachine', None)
+	sm = me.fetch('smachine', None)
 	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
-		smachine = statemachines.StateMachine(statetbl=op('intersectiontbl'), conntbl=op('connectiontbl'))
 		dbglog('loading new state machine')
-	me.storeStartupValue('smachine', smachine)
-	dbglog('putting states in storage (%s)' % (', '.join(smachine.states.keys()),))
-	for state in smachine.states.values():
+		smachine = sm = statemachines.StateMachine(statetbl=op('intersectiontbl'), conntbl=op('connectiontbl'))
+		me.unstoreStartupValue('*')
+		me.unstore('*')
+	me.storeStartupValue('smachine', sm)
+	dbglog('putting states in storage (%s)' % (', '.join(sm.states.keys()),))
+	for state in sm.states.values():
 		me.store(state.name, state)
+	# if len(sm.states) > 0:
+	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(sm.states.keys()[0]) + ')', delayFrames=1)
 
 
 def get(check=False):
