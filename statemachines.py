@@ -82,6 +82,11 @@ class StateMachine:
 			return []
 		return list(self.current.connections.values())
 
+	def getAllConnections(self):
+		for state in self.states.values():
+			for conn in state.connections.values():
+				yield conn
+
 	def getConnectionTargetNames(self):
 		return [c.target.name for c in self.getConnections()]
 

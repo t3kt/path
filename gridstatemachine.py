@@ -5,9 +5,11 @@ import td
 
 smachine = None
 schooser = None
+sconnections = None
 
 def init(force=False):
 	global smachine
+	global sconnections
 	sm = me.fetch('smachine', None)
 	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
@@ -23,6 +25,7 @@ def init(force=False):
 		else:
 			startName = None
 		smachine = sm = statemachines.StateMachine(states=states, startName=startName)
+		sconnections = None
 		me.unstoreStartupValue('*')
 		me.unstore('*')
 	me.storeStartupValue('smachine', sm)
@@ -41,6 +44,14 @@ def get(check=False):
 		raise Exception('statemachine not found')
 	return sm
 
+def getAllConnections():
+	global sconnections
+	if sconnections is None:
+		sm = get()
+		if sm is None:
+			return None
+		sconnections = list(sm.getAllConnections())
+	return sconnections
 
 def setCurrent(name):
 	sm = get(check=True)
@@ -116,22 +127,26 @@ def buildPointDisplayTable(dat, currentColor, availableColor, inactiveColor):
 			color = inactiveColor
 		props['available'] = 1 if available else 0
 		props['current'] = 1 if iscurrent else 0
-		props['r'] = color[0]
-		props['g'] = color[1]
-		props['b'] = color[2]
-		props['a'] = color[3]
+		props['r'], props['g'], props['b'], props['a'] = color
 		tekt.appendDictRow(dat, props)
 
-def buildConnectionDisplayTable(dat):
+def buildConnectionDisplayTable(dat, availableColor, inactiveColor):
 	dat.clear()
-	dat.appendRow(['srcx', 'srcy', 'srcz', 'tgtx', 'tgty', 'tgtz'])
+	dat.appendRow(['srcx', 'srcy', 'srcz', 'tgtx', 'tgty', 'tgtz', 'available', 'r', 'g', 'b', 'a'])
 	sm = get()
 	if sm is None or sm.current is None:
 		return
-	srcpos = (sm.current.props['rawx'], sm.current.props['rawy'], sm.current.props['rawz'])
-	for conn in sm.current.connections.values():
-		targetprops = conn.target.props
-		dat.appendRow(srcpos + (targetprops['rawx'], targetprops['rawy'], targetprops['rawz']))
+	for conn in getAllConnections():
+		available = sm.current is not None and conn.source.name == sm.current.name
+		color = availableColor if available else inactiveColor
+		srcprops = conn.source.props
+		tgtprops = conn.target.props
+		props = {}
+		props['srcx'], props['srcy'], props['srcz'] = srcprops['rawx'], srcprops['rawy'], srcprops['rawz']
+		props['tgtx'], props['tgty'], props['tgtz'] = tgtprops['rawx'], tgtprops['rawy'], tgtprops['rawz']
+		props['available'] = 1 if available else 0
+		props['r'], props['g'], props['b'], props['a'] = color
+		tekt.appendDictRow(dat, props)
 
 #####
 #	load all the state points into a dict( name   -> state )
