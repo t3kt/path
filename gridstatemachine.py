@@ -19,7 +19,8 @@ def init(force=False):
 		conngroups = ops(settings['connectgrouppath', 1].val)
 		scaling = float(settings["scaling", 1].val)
 		states = loadEnvironmentStates(pointgroups, conngroups, scaling)
-		dumpToTables(states, op('intersectiontbl'), op('connectiontbl'))
+		buildStateDumpTable(op('states_dump'))
+		buildConnectionDumpTable(op('connections_dump'))
 		if len(states) > 0:
 			startName = list(states.keys())[0]
 		else:
@@ -92,19 +93,22 @@ def buildCurrentStateTable(dat):
 	tekt.appendDictRow(dat, sm.current.props)
 
 
-def buildCurrentConnectionsTable(dat):
+def buildConnectionDumpTable(dat):
 	dat.clear()
-	dat.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
+	dat.appendRow(['source', 'target'])
 	sm = get()
-	if sm.current is not None:
-		for conn in sm.getConnections():
-			tekt.appendDictRow(dat, conn.target.props)
-
+	if sm is None:
+		return
+	for state in sm.states.values():
+		for conn in state.connections.values():
+			dat.appendRow([state.name, conn.target.name])
 
 def buildStateDumpTable(dat):
 	dat.clear()
 	dat.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
 	sm = get()
+	if sm is None:
+		return
 	for state in sm.states.values():
 		tekt.appendDictRow(dat, state.props)
 
