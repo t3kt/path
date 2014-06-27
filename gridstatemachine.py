@@ -2,6 +2,7 @@ import tekt
 import statemachines
 from statemachines import Connection, State, dbglog
 import td
+import re
 
 smachine = None
 schooser = None
@@ -169,7 +170,6 @@ def _tupleMult(a, b):
 
 def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 	states = {}
-	pointLookup = {}
 	for ptGroup in pointGroups:
 		for obj in ptGroup.children:
 			if obj.type != 'null':
@@ -184,13 +184,13 @@ def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 				'rawz': obj.par.tz.val
 			})
 			states[state.name] = state
-			pointLookup[(obj.par.tx.val, obj.par.ty.val, obj.par.tz.val)] = state
-		halfScale = scaling / 2
-		axes = (
-			((-halfScale, 0, 0), (halfScale, 0, 0)),
-			((0, -halfScale, 0), (0, halfScale, 0, 0)),
-			((0, 0, -halfScale), (0, 0, halfScale))
-		)
+	pointLookup = buildPointLookup(states)
+	halfScale = scaling / 2
+	axes = (
+		((-halfScale, 0, 0), (halfScale, 0, 0)),
+		((0, -halfScale, 0), (0, halfScale, 0, 0)),
+		((0, 0, -halfScale), (0, 0, halfScale))
+	)
 	for conGroup in connectionGroups:
 		for obj in conGroup.children:
 			if obj.type != 'null':
@@ -209,13 +209,15 @@ def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 				stateB.addConnection(connBA)
 	return states
 
-def dumpToTables(states, pointsTbl, connectionsTbl):
-	pointsTbl.clear()
-	pointsTbl.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
-	connectionsTbl.clear()
-	connectionsTbl.appendRow(['source', 'target'])
-	for state in states.values():
-		tekt.appendDictRow(pointsTbl, state.props)
-		for connection in state.connections.values():
-			connectionsTbl.appendRow([connection.source.name, connection.target.name])
+def buildPointLookup(states):
+	return {state.rawPos: state for state in states.values}
+
+def loadEnvPaths(animData, states, pathPrefixPattern):
+	prefixPattern = re.compile(pathPrefixPattern)
+	pointLookup = buildPointLookup(states)
+	for xchan in animData.chans('*:tx'):
+		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
+		
+		pass
+	pass
 

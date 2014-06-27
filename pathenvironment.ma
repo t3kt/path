@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Fri, Jun 27, 2014 02:20:42 PM
+//Last modified: Fri, Jun 27, 2014 02:41:56 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -25670,6 +25670,20 @@ createNode transform -n "pathsInnerGRP" -p "rootGRP";
 createNode transform -n "locator217" -p "pathsInnerGRP";
 createNode locator -n "locatorShape217" -p "locator217";
 	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 4;
+	setAttr ".gpr" 10;
+	setAttr ".gps" 2;
+	setAttr ".grs" 1;
+	setAttr ".gre" 20;
+createNode transform -n "locator218" -p "pathsInnerGRP";
+createNode locator -n "locatorShape218" -p "locator218";
+	setAttr -k off ".v";
+createNode transform -n "locator219" -p "pathsInnerGRP";
+	setAttr ".t" -type "double3" 0 0 -20 ;
+	setAttr -av ".tx";
+createNode locator -n "locatorShape219" -p "locator219";
+	setAttr -k off ".v";
 createNode mentalrayItemsList -s -n "mentalrayItemsList";
 createNode mentalrayGlobals -s -n "mentalrayGlobals";
 createNode mentalrayOptions -s -n "miDefaultOptions";
@@ -26095,9 +26109,42 @@ createNode animCurveTL -n "locator217_translateZ";
 	setAttr ".wgt" no;
 	setAttr -s 7 ".ktv[0:6]"  1 0 4 10 5 20 10 10 11 0 14 10 15 20;
 	setAttr -s 7 ".kot[0:6]"  5 5 5 5 5 18 18;
+createNode animCurveTL -n "locator218_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  1 0 2 0 3 0 4 10 5 20 6 20 7 20;
+	setAttr -s 7 ".kit[0:6]"  2 18 18 2 2 18 18;
+	setAttr -s 7 ".kot[0:6]"  5 18 5 5 5 18 18;
+createNode animCurveTL -n "locator218_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  1 0 2 0 3 0 4 0 5 0 6 0 7 0;
+	setAttr -s 7 ".kit[0:6]"  2 18 18 18 18 18 18;
+	setAttr -s 7 ".kot[0:6]"  5 18 5 18 18 18 18;
+createNode animCurveTL -n "locator218_translateZ";
+	setAttr ".tan" 5;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  1 0 2 -10 3 -20 4 -20 5 -20 6 -10 7 0;
+	setAttr -s 7 ".kit[0:6]"  2 2 1 1 9 2 2;
+	setAttr -s 7 ".kix[2:6]"  0.0041666305623948574 0.012499024160206318 
+		0.0083330431953072548 0.0041666310280561447 0.0041666296310722828;
+	setAttr -s 7 ".kiy[2:6]"  -0.99999135732650757 0.99992191791534424 
+		0.99996531009674072 0.99999129772186279 0.99999129772186279;
+createNode animCurveTL -n "locator219_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  1 -20 4 -10 5 0;
+createNode animCurveTL -n "locator219_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTL -n "locator219_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  1 0 2 -10 3 -20;
 select -ne :time1;
-	setAttr ".o" 15;
-	setAttr ".unw" 15;
+	setAttr ".o" 5;
+	setAttr ".unw" 5;
 select -ne :renderPartition;
 	setAttr -s 8 ".st";
 select -ne :initialShadingGroup;
@@ -26192,6 +26239,12 @@ connectAttr "connectionsMidLayer.di" "connectorsMidGRP.do";
 connectAttr "locator217_translateX.o" "locator217.tx";
 connectAttr "locator217_translateY.o" "locator217.ty";
 connectAttr "locator217_translateZ.o" "locator217.tz";
+connectAttr "locator218_translateX.o" "locator218.tx";
+connectAttr "locator218_translateY.o" "locator218.ty";
+connectAttr "locator218_translateZ.o" "locator218.tz";
+connectAttr "locator219_translateX.o" "locator219.tx";
+connectAttr "locator219_translateY.o" "locator219.ty";
+connectAttr "locator219_translateZ.o" "locator219.tz";
 connectAttr ":mentalrayGlobals.msg" ":mentalrayItemsList.glb";
 connectAttr ":miDefaultOptions.msg" ":mentalrayItemsList.opt" -na;
 connectAttr ":miDefaultFramebuffer.msg" ":mentalrayItemsList.fb" -na;

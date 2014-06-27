@@ -25,6 +25,10 @@ class State:
 		"""
 		self.connections[conn.target.name] = conn
 
+	@property
+	def rawPos(self):
+		return self.props['rawx'], self.props['rawy'], self.props['rawz']
+
 	def __repr__(self):
 		return "State(%s)" % (self.name,)
 
