@@ -2,7 +2,6 @@ import tekt
 import statemachines
 from statemachines import Connection, State, dbglog
 import td
-import re
 
 smachine = None
 schooser = None
@@ -17,9 +16,7 @@ def init(force=False):
 		dbglog('loading new state machine')
 		settings = op("define")
 		pointgroups = ops(settings['pointgrouppath', 1].val)
-		conngroups = ops(settings['connectgrouppath', 1].val)
-		scaling = float(settings["scaling", 1].val)
-		states = loadEnvironmentStates(pointgroups, conngroups, scaling)
+		states = loadEnvStates__2(pointgroups, op(settings['animtakepath', 1].val))
 		buildStateDumpTable(op('states_dump'))
 		buildConnectionDumpTable(op('connections_dump'))
 		if len(states) > 0:
@@ -87,7 +84,7 @@ def setNoRepeat(norepeat):
 
 def buildCurrentStateTable(dat):
 	dat.clear()
-	dat.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
+	dat.appendRow(['name', 'x', 'y', 'z'])
 	sm = get()
 	if sm is None or sm.current is None:
 		return
@@ -106,7 +103,7 @@ def buildConnectionDumpTable(dat):
 
 def buildStateDumpTable(dat):
 	dat.clear()
-	dat.appendRow(['name', 'gridx', 'gridy', 'gridz', 'rawx', 'rawy', 'rawz'])
+	dat.appendRow(['name', 'x', 'y', 'z'])
 	sm = get()
 	if sm is None:
 		return
@@ -116,7 +113,7 @@ def buildStateDumpTable(dat):
 
 def buildPointDisplayTable(dat, currentColor, availableColor, inactiveColor):
 	dat.clear()
-	dat.appendRow(['name', 'available', 'current', 'rawx', 'rawy', 'rawz', 'r', 'g', 'b', 'a'])
+	dat.appendRow(['name', 'available', 'current', 'x', 'y', 'z', 'r', 'g', 'b', 'a'])
 	sm = get()
 	if sm is None or sm.current is None:
 		return
@@ -147,8 +144,8 @@ def buildConnectionDisplayTable(dat, availableColor, inactiveColor):
 		srcprops = conn.source.props
 		tgtprops = conn.target.props
 		props = {}
-		props['srcx'], props['srcy'], props['srcz'] = srcprops['rawx'], srcprops['rawy'], srcprops['rawz']
-		props['tgtx'], props['tgty'], props['tgtz'] = tgtprops['rawx'], tgtprops['rawy'], tgtprops['rawz']
+		props['srcx'], props['srcy'], props['srcz'] = srcprops['x'], srcprops['y'], srcprops['z']
+		props['tgtx'], props['tgty'], props['tgtz'] = tgtprops['x'], tgtprops['y'], tgtprops['z']
 		props['available'] = 1 if available else 0
 		props['r'], props['g'], props['b'], props['a'] = color
 		tekt.appendDictRow(dat, props)
@@ -170,21 +167,19 @@ def _tupleMult(a, b):
 
 def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 	states = {}
+	pointLookup = {}
 	for ptGroup in pointGroups:
 		for obj in ptGroup.children:
 			if obj.type != 'null':
 				continue
 			state = State({
 				'name': obj.name,
-				'gridx': int(obj.par.tx / scaling),
-				'gridy': int(obj.par.ty / scaling),
-				'gridz': int(obj.par.tz / scaling),
-				'rawx': obj.par.tx.val,
-				'rawy': obj.par.ty.val,
-				'rawz': obj.par.tz.val
+				'x': obj.par.tx.val,
+				'y': obj.par.ty.val,
+				'z': obj.par.tz.val
 			})
 			states[state.name] = state
-	pointLookup = buildPointLookup(states)
+			pointLookup[(state.props['x'], state.props['y'], state.props['z'])] = state
 	halfScale = scaling / 2
 	axes = (
 		((-halfScale, 0, 0), (halfScale, 0, 0)),
@@ -209,22 +204,43 @@ def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 				stateB.addConnection(connBA)
 	return states
 
-def buildPointLookup(states):
-	return {state.rawPos: state for state in states.values()}
-
-def loadEnvPaths(animData, states, pathPrefixPattern):
-	prefixPattern = re.compile(pathPrefixPattern)
-	pointLookup = buildPointLookup(states)
+def loadEnvStates__2(pointGroups, animData):
+	states = {}
+	pointLookup = {}
+	for ptGroup in pointGroups:
+		for obj in ptGroup.children:
+			if obj.type != 'null':
+				continue
+			state = State({
+				'name': obj.name,
+				'x': obj.par.tx.val,
+				'y': obj.par.ty.val,
+				'z': obj.par.tz.val
+			})
+			states[state.name] = state
+			pointLookup[(state.props['x'], state.props['y'], state.props['z'])] = state
+	print('point lookup: ', pointLookup)
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
-		xvals, yvals, zvals = xchan.vals, ychan.vals, zchan.vals
-		prevpos = None
-		for i in range(len(xchan)):
-			pos = xchan[i], ychan[i], zchan[i]
-			if prevpos is not None and pos == prevpos:
+		positions = list(zip(xchan.vals, ychan.vals, zchan.vals))
+		print('loading path channels: %s' % (xchan.name[:-1] + '[xyz]',))
+		for i in range(1, len(positions)):
+			posA = positions[i - 1]
+			posB = positions[i]
+			if posA == posB:
 				continue
-
-			pass
-		pass
-	pass
+			print('loading position pair: %s <-> %s' % (posA, posB))
+			stateA, stateB = pointLookup.get(posA, None), pointLookup.get(posB, None)
+			if stateA is None:
+				print('state not found at %s' % (posA,))
+				continue
+			if stateB is None:
+				print('state not found at %s' % (posB,))
+				continue
+			print('states found: %s, %s' % (stateA, stateB))
+			connAB = Connection(stateA, stateB, {})
+			connBA = Connection(stateB, stateA, {})
+			stateA.addConnection(connAB)
+			stateB.addConnection(connBA)
+	return states
 
