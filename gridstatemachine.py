@@ -210,14 +210,21 @@ def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 	return states
 
 def buildPointLookup(states):
-	return {state.rawPos: state for state in states.values}
+	return {state.rawPos: state for state in states.values()}
 
 def loadEnvPaths(animData, states, pathPrefixPattern):
 	prefixPattern = re.compile(pathPrefixPattern)
 	pointLookup = buildPointLookup(states)
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
-		
+		xvals, yvals, zvals = xchan.vals, ychan.vals, zchan.vals
+		prevpos = None
+		for i in range(len(xchan)):
+			pos = xchan[i], ychan[i], zchan[i]
+			if prevpos is not None and pos == prevpos:
+				continue
+
+			pass
 		pass
 	pass
 
