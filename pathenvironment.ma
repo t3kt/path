@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Fri, Jun 27, 2014 11:49:49 PM
+//Last modified: Sat, Jun 28, 2014 06:34:49 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,14 +89,14 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -299.60280081125637 16.52782581658586 258.25082880848021 ;
-	setAttr ".r" -type "double3" -1.5218466282591929 -51.800000000003692 0 ;
+	setAttr ".t" -type "double3" 207.27006328486604 -102.00306192668577 474.6875679551797 ;
+	setAttr ".r" -type "double3" 170.67815337158433 -156.59999999997569 0 ;
 	setAttr ".rp" -type "double3" -1.499791952665706e-014 2.1280395160635074e-014 0 ;
 	setAttr ".rpt" -type "double3" 1.8385012750566143e-013 8.4346989972817053e-014 2.8836852958170597e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 401.75969907620197;
+	setAttr ".coi" 590.32610099330611;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -145,7 +145,7 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 64.951905283832915;
-	setAttr ".ow" 247.86358227712464;
+	setAttr ".ow" 605.15198687044415;
 	setAttr ".imn" -type "string" "side";
 	setAttr ".den" -type "string" "side_depth";
 	setAttr ".man" -type "string" "side_mask";
@@ -16789,10 +16789,10 @@ createNode shadingEngine -n "surfaceShader1SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo4";
 createNode displayLayer -n "envMidLayer";
-	setAttr ".dt" 1;
+	setAttr ".dt" 2;
+	setAttr ".v" no;
 	setAttr ".do" 8;
 createNode displayLayer -n "envOuterLayer";
-	setAttr ".v" no;
 	setAttr ".do" 6;
 createNode displayLayer -n "envInnerWireLayer";
 	setAttr ".dt" 1;
@@ -16825,6 +16825,7 @@ createNode displayLayer -n "connectionsMidLayer";
 	setAttr ".v" no;
 	setAttr ".do" 1;
 createNode displayLayer -n "envInnerLayer";
+	setAttr ".v" no;
 	setAttr ".do" 10;
 createNode displayLayer -n "envMidWireLayer";
 	setAttr ".dt" 1;
@@ -16832,7 +16833,6 @@ createNode displayLayer -n "envMidWireLayer";
 	setAttr ".do" 7;
 createNode displayLayer -n "envOuterWireLayer";
 	setAttr ".dt" 1;
-	setAttr ".v" no;
 	setAttr ".do" 5;
 createNode surfaceShader -n "surfaceShader2";
 	setAttr ".oc" -type "float3" 0.42105746 0.42105746 0.42105746 ;
@@ -16887,7 +16887,6 @@ createNode animCurveTL -n "locator219_translateZ";
 	setAttr -s 2 ".ktv[0:1]"  0 0 1 -20;
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode displayLayer -n "pathsInnerLayer";
-	setAttr ".dt" 1;
 	setAttr ".v" no;
 	setAttr ".do" 11;
 createNode polyMergeVert -n "polyMergeVert1";
