@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Sat, Jun 28, 2014 07:04:23 PM
+//Last modified: Sat, Jun 28, 2014 07:14:13 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,14 +89,14 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 151.97703935784904 165.65477324319153 41.724891291239516 ;
-	setAttr ".r" -type "double3" -45.921846628801525 88.20000000005659 0 ;
+	setAttr ".t" -type "double3" 35.22399182607716 0.057208569016100164 -323.82519103501255 ;
+	setAttr ".r" -type "double3" -0.32184662805879172 537.79999999987899 0 ;
 	setAttr ".rp" -type "double3" -1.499791952665706e-014 2.1280395160635074e-014 0 ;
 	setAttr ".rpt" -type "double3" 1.8385012750566143e-013 8.4346989972817053e-014 2.8836852958170597e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 211.55518662590038;
+	setAttr ".coi" 310.84886999103963;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -16481,6 +16481,10 @@ createNode locator -n "locatorShape222" -p "locator222";
 createNode transform -n "locator223" -p "pathsInnerGRP";
 createNode locator -n "locatorShape223" -p "locator223";
 	setAttr -k off ".v";
+createNode transform -n "pathsMidGRP" -p "rootGRP";
+createNode transform -n "locator224" -p "pathsMidGRP";
+createNode locator -n "locatorShape224" -p "locator224";
+	setAttr -k off ".v";
 createNode mentalrayItemsList -s -n "mentalrayItemsList";
 createNode mentalrayGlobals -s -n "mentalrayGlobals";
 createNode mentalrayOptions -s -n "miDefaultOptions";
@@ -16630,10 +16634,10 @@ createNode lightLinker -s -n "lightLinker1";
 	setAttr -s 6 ".lnk";
 	setAttr -s 8 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	setAttr ".cdl" 15;
-	setAttr -s 16 ".dli[1:15]"  1 2 3 4 5 6 7 8 
-		9 10 11 12 13 14 15;
-	setAttr -s 12 ".dli";
+	setAttr ".cdl" 16;
+	setAttr -s 17 ".dli[1:16]"  1 2 3 4 5 6 7 8 
+		9 10 11 12 13 14 15 16;
+	setAttr -s 13 ".dli";
 createNode displayLayer -n "defaultLayer";
 createNode renderLayerManager -n "renderLayerManager";
 createNode renderLayer -n "defaultRenderLayer";
@@ -16707,7 +16711,7 @@ createNode script -n "gridpath:uiConfigurationScriptNode";
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        setFocus `paneLayout -q -p1 $gMainPane`;\n        sceneUIReplacement -deleteRemaining;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 20 -size 200 -divisions 2 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "gridpath:sceneConfigurationScriptNode";
-	setAttr ".b" -type "string" "playbackOptions -min 0 -max 20 -ast 0 -aet 200 ";
+	setAttr ".b" -type "string" "playbackOptions -min 0 -max 72 -ast 0 -aet 200 ";
 	setAttr ".st" 6;
 createNode shadingEngine -n "gridpath:lightFogSE";
 	setAttr ".ihi" 0;
@@ -17747,9 +17751,32 @@ createNode animCurveTL -n "locator223_translateZ";
 		 15 -20;
 	setAttr -s 10 ".kot[0:9]"  5 5 5 5 5 5 5 5 
 		5 5;
+createNode animCurveTL -n "locator224_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 18 ".ktv[0:17]"  0 0 2 20 3 40 8 20 9 0 10 -20 11 -40 16 -20
+		 17 0 38 20 39 40 44 20 45 0 46 -20 47 -40 52 -20 53 0 54 0;
+	setAttr -s 18 ".kot[0:17]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator224_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 20 ".ktv[0:19]"  0 0 18 20 19 40 24 20 25 0 26 -20 27 -40
+		 32 -20 33 0 34 20 35 40 40 20 41 0 42 -20 43 -40 48 -20 49 0 50 20 51 40 54 20;
+	setAttr -s 20 ".kot[0:19]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 18;
+createNode animCurveTL -n "locator224_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 22 ".ktv[0:21]"  0 20 1 40 4 20 5 0 6 -20 7 -40 12 -20 13 0
+		 14 20 15 40 20 20 21 0 22 -20 23 -40 28 -20 29 0 30 20 31 40 36 20 37 0 38 0 39 0;
+	setAttr -s 22 ".kot[0:21]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode displayLayer -n "pathsMidLayer";
+	setAttr ".do" 12;
 select -ne :time1;
-	setAttr ".o" 8;
-	setAttr ".unw" 8;
+	setAttr ".o" 21;
+	setAttr ".unw" 21;
 select -ne :renderPartition;
 	setAttr -s 8 ".st";
 select -ne :initialShadingGroup;
@@ -17873,6 +17900,10 @@ connectAttr "locator223_translateX.o" "locator223.tx";
 connectAttr "locator223_translateY.o" "locator223.ty";
 connectAttr "locator223_translateZ.o" "locator223.tz";
 connectAttr "pathsInnerLayer.di" "locator223.do";
+connectAttr "pathsMidLayer.di" "pathsMidGRP.do";
+connectAttr "locator224_translateX.o" "locator224.tx";
+connectAttr "locator224_translateY.o" "locator224.ty";
+connectAttr "locator224_translateZ.o" "locator224.tz";
 connectAttr ":mentalrayGlobals.msg" ":mentalrayItemsList.glb";
 connectAttr ":miDefaultOptions.msg" ":mentalrayItemsList.opt" -na;
 connectAttr ":miDefaultFramebuffer.msg" ":mentalrayItemsList.fb" -na;
@@ -18224,6 +18255,7 @@ connectAttr "polyMirror7.out" "polyMirror8.ip";
 connectAttr "environment_innerShape.wm" "polyMirror8.mp";
 connectAttr "polyMirror8.out" "polyMirror9.ip";
 connectAttr "environment_innerShape.wm" "polyMirror9.mp";
+connectAttr "layerManager.dli[16]" "pathsMidLayer.id";
 connectAttr "gridpath:lightFogSE.pa" ":renderPartition.st" -na;
 connectAttr "gridpath:lightFogSE1.pa" ":renderPartition.st" -na;
 connectAttr "gridpath:phong1SG.pa" ":renderPartition.st" -na;
