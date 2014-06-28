@@ -204,9 +204,12 @@ def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
 				stateB.addConnection(connBA)
 	return states
 
+DBG_pointLookup = None
 def loadEnvStates__2(pointGroups, animData):
+	global DBG_pointLookup
 	states = {}
 	pointLookup = {}
+	DBG_pointLookup = pointLookup
 	for ptGroup in pointGroups:
 		for obj in ptGroup.children:
 			if obj.type != 'null':
@@ -218,7 +221,7 @@ def loadEnvStates__2(pointGroups, animData):
 				'z': obj.par.tz.val
 			})
 			states[state.name] = state
-			pointLookup[(state.props['x'], state.props['y'], state.props['z'])] = state
+			pointLookup[(int(state.props['x']), int(state.props['y']), int(state.props['z']))] = state
 	print('point lookup: ', pointLookup)
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
@@ -226,7 +229,9 @@ def loadEnvStates__2(pointGroups, animData):
 		print('loading path channels: %s' % (xchan.name[:-1] + '[xyz]',))
 		for i in range(1, len(positions)):
 			posA = positions[i - 1]
+			posA = int(posA[0]), int(posA[1]), int(posA[2])
 			posB = positions[i]
+			posB = int(posB[0]), int(posB[1]), int(posB[2])
 			if posA == posB:
 				continue
 			print('loading position pair: %s <-> %s' % (posA, posB))
