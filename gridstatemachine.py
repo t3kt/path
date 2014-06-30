@@ -3,6 +3,7 @@ import statemachines
 from statemachines import Connection, State, dbglog
 import td
 
+
 smachine = None
 schooser = None
 sconnections = None
@@ -16,7 +17,7 @@ def init(force=False):
 		dbglog('loading new state machine')
 		settings = op("define")
 		pointgroups = ops(settings['pointgrouppath', 1].val)
-		states = loadEnvStates__2(pointgroups, op(settings['animtakepath', 1].val))
+		states = loadEnvironmentStates(pointgroups, op(settings['animtakepath', 1].val))
 		buildStateDumpTable(op('states_dump'))
 		buildConnectionDumpTable(op('connections_dump'))
 		if len(states) > 0:
@@ -153,59 +154,15 @@ def buildConnectionDisplayTable(dat, availableColor, inactiveColor):
 #####
 #	load all the state points into a dict( name   -> state )
 #	load all the state points into a dict( coords -> state )
-#	for each connection point:
-#		for each axis:
-#			if there are state points at +scaling and -scaling
+#	for each connection path:
+#		for each point:
+#			if there are state points at point and previous point
 #				add a connection between them
 #####
 
-def _tupleAdd(a, b):
-	return tuple(x[0] + x[1] for x in zip(a, b))
-
-def _tupleMult(a, b):
-	return tuple(x[0] * x[1] for x in zip(a, b))
-
-def loadEnvironmentStates(pointGroups, connectionGroups, scaling):
-	states = {}
-	pointLookup = {}
-	for ptGroup in pointGroups:
-		for obj in ptGroup.children:
-			if obj.type != 'null':
-				continue
-			state = State({
-				'name': obj.name,
-				'x': obj.par.tx.val,
-				'y': obj.par.ty.val,
-				'z': obj.par.tz.val
-			})
-			states[state.name] = state
-			pointLookup[(state.props['x'], state.props['y'], state.props['z'])] = state
-	halfScale = scaling / 2
-	axes = (
-		((-halfScale, 0, 0), (halfScale, 0, 0)),
-		((0, -halfScale, 0), (0, halfScale, 0, 0)),
-		((0, 0, -halfScale), (0, 0, halfScale))
-	)
-	for conGroup in connectionGroups:
-		for obj in conGroup.children:
-			if obj.type != 'null':
-				continue
-			connpos = (obj.par.tx.val, obj.par.ty.val, obj.par.tz.val)
-			for axis in axes:
-				stateA = pointLookup.get(_tupleAdd(axis[0], connpos), None)
-				if stateA is None:
-					continue
-				stateB = pointLookup.get(_tupleAdd(axis[1], connpos), None)
-				if stateB is None:
-					continue
-				connAB = Connection(stateA, stateB, {})
-				connBA = Connection(stateB, stateA, {})
-				stateA.addConnection(connAB)
-				stateB.addConnection(connBA)
-	return states
 
 DBG_pointLookup = None
-def loadEnvStates__2(pointGroups, animData):
+def loadEnvironmentStates(pointGroups, animData):
 	global DBG_pointLookup
 	states = {}
 	pointLookup = {}
@@ -226,6 +183,8 @@ def loadEnvStates__2(pointGroups, animData):
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
 		positions = list(zip(xchan.vals, ychan.vals, zchan.vals))
+		positions = [(int(round(pos[0])), int(round(pos[1])), int(round(pos[2]))) for pos in positions if pos in pointLookup]
+		positions = [pos for pos in positions if pos in pointLookup]
 		print('loading path channels: %s' % (xchan.name[:-1] + '[xyz]',))
 		for i in range(1, len(positions)):
 			posA = positions[i - 1]
