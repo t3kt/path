@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Tue, Jul 01, 2014 01:16:56 PM
+//Last modified: Tue, Jul 01, 2014 03:32:05 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,14 +89,14 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 30.951610701901842 129.44909786142682 174.43194451065321 ;
+	setAttr ".t" -type "double3" 28.407391957781794 117.40383559015595 155.85869472586521 ;
 	setAttr ".r" -type "double3" 327.27815338798837 727.79999999974359 -4.0128206082540016e-016 ;
 	setAttr ".rp" -type "double3" -1.499791952665706e-014 -3.5563023700172941e-014 0 ;
 	setAttr ".rpt" -type "double3" 2.8597370322872363e-013 6.4503182277835168e-014 8.0291288634853572e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 185.09323378231602;
+	setAttr ".coi" 162.8103479779648;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
