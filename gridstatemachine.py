@@ -25,6 +25,7 @@ def init(force=False):
 		else:
 			startName = None
 		smachine = sm = statemachines.StateMachine(states=states, startName=startName)
+		smachine.chooser = statemachines.Chooser2(settings=tekt.DATSettings(op('/_/chooser_settings')))
 		sconnections = None
 		#me.unstoreStartupValue('*')
 		#me.unstore('*')

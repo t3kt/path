@@ -172,25 +172,33 @@ class NoRepeatChooser(RandomChooser):
 class Chooser2:
 	def __init__(self, settings: tekt.Settings):
 		self.smachine = None
-		self.previous = list()
 		self.settings = settings
+		self.previous = deque(maxlen=int(settings.get('traillength', default=2)))
 
 	def attach(self, smachine: StateMachine):
 		self.smachine = smachine
 		self.previous = smachine.current
 
-	@staticmethod
-	def chooseRandom(connections: list) -> State:
-		return random.choice(connections)
-
 	def chooseNext(self, currentState: State, connections: list) -> State:
-		newmaxlen = self.settings['traillength']
+		dbglog('choosing next state...')
+		newmaxlen = self.settings.traillength
 		if newmaxlen is not None and int(newmaxlen) != self.previous.maxlen:
-			self.previous = deque(self.previous, maxlen=newmaxlen)
+			dbglog('trail length changed to %s' % (int(newmaxlen),))
+			self.previous = deque(self.previous, maxlen=int(newmaxlen))
 		if not int(self.settings.get('norepeat', default='0')):
+			dbglog('norepeat is off, choosing random connection')
 			conn = random.choice(connections)
 		else:
-			conn = None
-			pass
+			dbglog('norepeat is on, previous= %s' % (tuple(self.previous),))
+			filteredconns = list(c for c in connections if c.target.name not in self.previous)
+			dbglog('-- found %s of %s connections that are not repeats' % (len(filteredconns), len(connections)))
+			if len(filteredconns) > 0:
+				conn = random.choice(filteredconns)
+			else:
+				conn = random.choice(connections)
+		if conn is None:
+			dbglog('no connection found!')
+		else:
+			dbglog('chose connection to %s' % (conn.target.name,))
 		self.previous.append(currentState.name)
 		return conn.target if conn is not None else None
