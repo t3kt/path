@@ -183,7 +183,7 @@ def loadEnvironmentStates(pointGroups, animData):
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
 		positions = list(zip(xchan.vals, ychan.vals, zchan.vals))
-		positions = [(int(round(pos[0])), int(round(pos[1])), int(round(pos[2]))) for pos in positions if pos in pointLookup]
+		#positions = [(int(round(pos[0])), int(round(pos[1])), int(round(pos[2]))) for pos in positions if pos in pointLookup]
 		positions = [pos for pos in positions if pos in pointLookup]
 		print('loading path channels: %s' % (xchan.name[:-1] + '[xyz]',))
 		for i in range(1, len(positions)):
