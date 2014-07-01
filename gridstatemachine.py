@@ -26,12 +26,12 @@ def init(force=False):
 			startName = None
 		smachine = sm = statemachines.StateMachine(states=states, startName=startName)
 		sconnections = None
-		me.unstoreStartupValue('*')
-		me.unstore('*')
-	me.storeStartupValue('smachine', sm)
-	dbglog('putting states in storage (%s)' % (', '.join(sm.states.keys()),))
-	for state in sm.states.values():
-		me.store(state.name, state)
+		#me.unstoreStartupValue('*')
+		#me.unstore('*')
+	#me.storeStartupValue('smachine', sm)
+	#dbglog('putting states in storage (%s)' % (', '.join(sm.states.keys()),))
+	#for state in sm.states.values():
+	#	me.store(state.name, state)
 	# if len(sm.states) > 0:
 	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(sm.states.keys()[0]) + ')', delayFrames=1)
 
