@@ -91,13 +91,6 @@ class StateMachine:
 	def getConnectionTargetNames(self):
 		return [c.target.name for c in self.getConnections()]
 
-	def setChooser(self, chooser):
-		if chooser is None:
-			self.chooser = None
-		else:
-			self.chooser = chooser
-			chooser.attach(self)
-
 	def chooseNext(self):
 		if self.current is None:
 			return None
@@ -128,48 +121,7 @@ class StateMachine:
 		d = self.toJsonDict()
 		return json.dumps(d, sort_keys=True, indent=4)
 
-class Chooser(metaclass=ABCMeta):
-	def __init__(self):
-		self.smachine = None
-
-	def attach(self, smachine: StateMachine):
-		self.smachine = smachine
-
-	@abstractmethod
-	def chooseNext(self, currentState: State, connections: list) -> State:
-		pass
-
-
-class RandomChooser(Chooser):
-	def __init__(self):
-		super().__init__()
-
-	def chooseNext(self, currentState: State, connections: list):
-		conn = random.choice(connections)
-		return conn.target if conn is not None else None
-
-class NoRepeatChooser(RandomChooser):
-	def __init__(self, chainlength=2):
-		super().__init__()
-		self.previous = deque(maxlen=chainlength)
-		self.chainlength = 2
-
-	def attach(self, smachine: StateMachine):
-		Chooser.attach(self, smachine)
-		self.previous = [smachine.current.name]
-
-	def chooseNext(self, currentState: State, connections: list) -> State:
-		if len(self.previous) == 0:
-			self.previous.append(currentState.name)
-			return RandomChooser.chooseNext(self, currentState, connections)
-		if len(connections) == 1:
-			return connections[0].target
-		conns = list(c for c in connections if c.target.name not in self.previous)
-		nc = RandomChooser.chooseNext(self, currentState, conns)
-		self.previous.append(currentState.name)
-		return None if nc is None else nc.target
-
-class Chooser2:
+class Chooser:
 	def __init__(self, settings: tekt.Settings):
 		self.smachine = None
 		self.settings = settings

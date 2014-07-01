@@ -11,7 +11,7 @@ sconnections = None
 def init(force=False):
 	global smachine
 	global sconnections
-	sm = me.fetch('smachine', None)
+	#smachine = me.fetch('smachine', None) if smachine is None else smachine
 	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
 		dbglog('loading new state machine')
@@ -24,17 +24,17 @@ def init(force=False):
 			startName = list(states.keys())[0]
 		else:
 			startName = None
-		smachine = sm = statemachines.StateMachine(states=states, startName=startName)
-		smachine.chooser = statemachines.Chooser2(settings=tekt.DATSettings(op('/_/chooser_settings')))
+		smachine = statemachines.StateMachine(states=states, startName=startName)
+		smachine.chooser = statemachines.Chooser(settings=tekt.DATSettings(op('/_/chooser_settings')))
 		sconnections = None
 		#me.unstoreStartupValue('*')
 		#me.unstore('*')
-	#me.storeStartupValue('smachine', sm)
-	#dbglog('putting states in storage (%s)' % (', '.join(sm.states.keys()),))
-	#for state in sm.states.values():
+	#me.storeStartupValue('smachine', smachine)
+	#dbglog('putting states in storage (%s)' % (', '.join(smachine.states.keys()),))
+	#for state in smachine.states.values():
 	#	me.store(state.name, state)
-	# if len(sm.states) > 0:
-	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(sm.states.keys()[0]) + ')', delayFrames=1)
+	# if len(smachine.states) > 0:
+	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(smachine.states.keys()[0]) + ')', delayFrames=1)
 
 
 def get(check=False):
@@ -70,18 +70,6 @@ def followNext():
 	else:
 		me.cook(force=True)
 		dbglog('picked connection to "%s"' % (nextState.name,))
-
-
-def setNoRepeat(norepeat):
-	global schooser
-	sm = get()
-	if norepeat:
-		schooser = statemachines.NoRepeatChooser()
-	else:
-		schooser = statemachines.RandomChooser()
-	if sm is None:
-		return
-	sm.setChooser(schooser)
 
 
 def buildCurrentStateTable(dat):
@@ -161,13 +149,9 @@ def buildConnectionDisplayTable(dat, availableColor, inactiveColor):
 #				add a connection between them
 #####
 
-
-DBG_pointLookup = None
 def loadEnvironmentStates(pointGroups, animData):
-	global DBG_pointLookup
 	states = {}
 	pointLookup = {}
-	DBG_pointLookup = pointLookup
 	for ptGroup in pointGroups:
 		for obj in ptGroup.children:
 			if obj.type != 'null':
