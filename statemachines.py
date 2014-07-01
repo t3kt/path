@@ -3,6 +3,7 @@ import tekt
 import random
 import json
 from abc import abstractmethod, ABCMeta
+from collections import deque
 
 loggingEnabled = False
 
@@ -144,24 +145,52 @@ class RandomChooser(Chooser):
 		super().__init__()
 
 	def chooseNext(self, currentState: State, connections: list):
-		return random.choice(connections)
+		conn = random.choice(connections)
+		return conn.target if conn is not None else None
 
 class NoRepeatChooser(RandomChooser):
-	def __init__(self):
+	def __init__(self, chainlength=2):
 		super().__init__()
-		self.previous = None
+		self.previous = deque(maxlen=chainlength)
+		self.chainlength = 2
 
 	def attach(self, smachine: StateMachine):
 		Chooser.attach(self, smachine)
-		self.previous = smachine.current
+		self.previous = [smachine.current.name]
 
 	def chooseNext(self, currentState: State, connections: list) -> State:
-		prev = self.previous
-		self.previous = currentState
-		if prev is None:
+		if len(self.previous) == 0:
+			self.previous.append(currentState.name)
 			return RandomChooser.chooseNext(self, currentState, connections)
 		if len(connections) == 1:
 			return connections[0].target
-		conns = list(c for c in connections if c.target != prev)
+		conns = list(c for c in connections if c.target.name not in self.previous)
 		nc = RandomChooser.chooseNext(self, currentState, conns)
+		self.previous.append(currentState.name)
 		return None if nc is None else nc.target
+
+class Chooser2:
+	def __init__(self, settings: tekt.Settings):
+		self.smachine = None
+		self.previous = list()
+		self.settings = settings
+
+	def attach(self, smachine: StateMachine):
+		self.smachine = smachine
+		self.previous = smachine.current
+
+	@staticmethod
+	def chooseRandom(connections: list) -> State:
+		return random.choice(connections)
+
+	def chooseNext(self, currentState: State, connections: list) -> State:
+		newmaxlen = self.settings['traillength']
+		if newmaxlen is not None and int(newmaxlen) != self.previous.maxlen:
+			self.previous = deque(self.previous, maxlen=newmaxlen)
+		if not int(self.settings.get('norepeat', default='0')):
+			conn = random.choice(connections)
+		else:
+			conn = None
+			pass
+		self.previous.append(currentState.name)
+		return conn.target if conn is not None else None
