@@ -179,6 +179,7 @@ def loadEnvironmentStates(pointGroups, animData):
 			})
 			states[state.name] = state
 			pointLookup[(int(state.props['x']), int(state.props['y']), int(state.props['z']))] = state
+			print('loaded state at %s: %s' % ((int(state.props['x']), int(state.props['y']), int(state.props['z'])), state.name))
 	print('point lookup: ', pointLookup)
 	for xchan in animData.chans('*:tx'):
 		ychan, zchan = animData.chans(xchan.name[:-1] + '[yz]')
