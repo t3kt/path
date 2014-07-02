@@ -7,19 +7,23 @@ import td
 smachine = None
 schooser = None
 sconnections = None
+regions = []
 
 def init(force=False):
 	global smachine
 	global sconnections
+	global regions
 	#smachine = me.fetch('smachine', None) if smachine is None else smachine
 	dbglog('existing state machine found: %s' % (smachine is not None, ))
 	if smachine is None or force:
 		dbglog('loading new state machine')
-		settings = op("define")
-		pointgroups = ops(settings['pointgrouppath', 1].val)
-		states = loadEnvironmentStates(pointgroups, op(settings['animtakepath', 1].val))
+		settings = tekt.DATSettings(op("define"))
+		pointgroups = ops(settings['pointgrouppath'])
+		states = loadEnvironmentStates(pointgroups, op(settings['animtakepath']))
 		buildStateDumpTable(op('states_dump'))
 		buildConnectionDumpTable(op('connections_dump'))
+		loadRegions(settings['regionspath'])
+		buildRegionTable(op('regiontbl'))
 		if len(states) > 0:
 			startName = list(states.keys())[0]
 		else:
@@ -36,14 +40,13 @@ def init(force=False):
 	# if len(smachine.states) > 0:
 	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(smachine.states.keys()[0]) + ')', delayFrames=1)
 
-
 def reloadModel():
 	settings = tekt.DATSettings(op('define'))
 	geo = op(settings['envmodelpath'])
 	wasOn = td.power()
 	if wasOn:
 		td.power(False)
-	#tekt.clearCOMP(geo)
+	tekt.clearCOMP(geo)
 	geo.importFBX(settings.get('envmodelfile'),
 				  lights=settings.getBool('envimportlights'),
 				  cameras=settings.getBool('envimportcameras'),
@@ -56,6 +59,7 @@ def reloadModel():
 	if wasOn:
 		td.power(True)
 	init(force=True)
+
 
 def get(check=False):
 	if smachine is not None:
@@ -91,6 +95,32 @@ def followNext():
 		me.cook(force=True)
 		dbglog('picked connection to "%s"' % (nextState.name,))
 
+def loadRegions(regionspath):
+	global regions
+	regions = []
+	for group in ops(regionspath):
+		for region in group.children:
+			if region.type != 'geo':
+				continue
+			pos = tdu.Position(region.par.tx.val, region.par.ty.val, region.par.tz.val)
+			bounds = region.computeBounds(display=False, render=False)
+			dist = abs(pos - bounds.min).length()
+			regions.append({
+				'name': region.name,
+				'cx': pos.x,
+				'cy': pos.y,
+				'cz': pos.z,
+				'center': pos,
+				'radius': dist
+			})
+
+def buildRegionTable(dat):
+	dat.clear()
+	dat.appendRow(['name', 'cx', 'cy', 'cz', 'radius'])
+	if regions is None:
+		return
+	for region in regions:
+		tekt.appendDictRow(dat, region)
 
 def buildCurrentStateTable(dat):
 	dat.clear()
@@ -159,6 +189,20 @@ def buildConnectionDisplayTable(dat, availableColor, inactiveColor):
 		props['available'] = 1 if available else 0
 		props['r'], props['g'], props['b'], props['a'] = color
 		tekt.appendDictRow(dat, props)
+
+def cookRegionLevels(chop, camstate):
+	chop.clear()
+	campos = tdu.Position(camstate['x'].eval(), camstate['y'].eval(), camstate['z'].eval())
+	for region in regions:
+		center = region['center']
+		radius = region['radius']
+		dist = abs(campos - center).length()
+		c = chop.appendChan(region['name'])
+		if dist > radius:
+			c.vals = [0]
+		else:
+			c.vals = [(radius - dist) / radius]
+
 
 #####
 #	load all the state points into a dict( name   -> state )
