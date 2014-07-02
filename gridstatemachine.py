@@ -43,8 +43,8 @@ def reloadModel():
 	wasOn = td.power()
 	if wasOn:
 		td.power(False)
-	tekt.clearCOMP(geo)
-	geo.importFBX(filepath=settings.envimportfilepath,
+	#tekt.clearCOMP(geo)
+	geo.importFBX(settings.get('envmodelfile'),
 				  lights=settings.getBool('envimportlights'),
 				  cameras=settings.getBool('envimportcameras'),
 				  mergeGeometry=settings.getBool('envimportmergegeo'),
