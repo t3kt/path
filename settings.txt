@@ -1,0 +1,18 @@
+scaling	20
+envmodelpath	/_/envmodel
+envgeopath	/_/envmodel/rootGRP/environmentsGRP/*
+envwiregeopath	/_/envmodel/rootGRP/environmentsWireGRP/*
+envextrageopath	/_/envmodel/rootGRP/envExtrasGRP/*
+pointgrouppath	/_/envmodel/rootGRP/points*GRP
+connectgrouppath	/_/envmodel/rootGRP/connectors*GRP
+animtakepath	/_/envmodel/takes/Take_001
+regionspath	/_/envmodel/rootGRP/regionsGRP
+envmodelfile	pathenvironment_1.fbx
+envimportgeofolder	Import/pathenvironment_1.fbx/Geo/
+envimportanimfolder	Import/pathenvironment_1.fbx/Chan/
+envimporttexfolder	
+envimportlights	0
+envimportcameras	0
+envimportmergegeo	1
+envimportgpudeform	1
+envimportrate	

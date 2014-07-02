@@ -37,6 +37,26 @@ def init(force=False):
 	# 	td.run('mod.gridstatemachine.setCurrent(' + repr(smachine.states.keys()[0]) + ')', delayFrames=1)
 
 
+def reloadModel():
+	settings = tekt.DATSettings(op('define'))
+	geo = op(settings['envmodelpath'])
+	wasOn = td.power()
+	if wasOn:
+		td.power(False)
+	tekt.clearCOMP(geo)
+	geo.importFBX(filepath=settings.envimportfilepath,
+				  lights=settings.getBool('envimportlights'),
+				  cameras=settings.getBool('envimportcameras'),
+				  mergeGeometry=settings.getBool('envimportmergegeo'),
+				  gpuDeform=settings.getBool('envimportlights'),
+				  rate=settings.getFloat('envimportrate', defaultval=None),
+				  textureFolder=settings.get('envimporttexfolder'),
+				  geometryFolder=settings.get('envimportgeofolder'),
+				  animationFolder=settings.get('envimportanimfolder'))
+	if wasOn:
+		td.power(True)
+	init(force=True)
+
 def get(check=False):
 	if smachine is not None:
 		return smachine

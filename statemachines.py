@@ -125,7 +125,7 @@ class Chooser:
 	def __init__(self, settings: tekt.Settings):
 		self.smachine = None
 		self.settings = settings
-		self.previous = deque(maxlen=int(settings.get('traillength', default=2)))
+		self.previous = deque(maxlen=int(settings.get('traillength', defaultval=2)))
 
 	def attach(self, smachine: StateMachine):
 		self.smachine = smachine
@@ -137,7 +137,7 @@ class Chooser:
 		if newmaxlen is not None and int(newmaxlen) != self.previous.maxlen:
 			dbglog('trail length changed to %s' % (int(newmaxlen),))
 			self.previous = deque(self.previous, maxlen=int(newmaxlen))
-		if not int(self.settings.get('norepeat', default='0')):
+		if not int(self.settings.get('norepeat', defaultval='0')):
 			dbglog('norepeat is off, choosing random connection')
 			conn = random.choice(connections)
 		else:
