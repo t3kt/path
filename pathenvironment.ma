@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Wed, Jul 02, 2014 11:52:10 PM
+//Last modified: Thu, Jul 03, 2014 12:08:55 AM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,15 +89,15 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 190.7823170058922 -300.72505623510472 -0.73673624598890808 ;
-	setAttr ".r" -type "double3" 128.67815336964262 268.59999999993056 1.2722218725854067e-013 ;
+	setAttr ".t" -type "double3" 463.04448045378723 -59.020992840541055 158.97487722037135 ;
+	setAttr ".r" -type "double3" 3.2781533694805076 787.80000000038967 -1.5783208790290406e-015 ;
 	setAttr ".rp" -type "double3" -1.2204381219035423e-014 -3.6931827171199028e-015 
 		1.1368683772161603e-013 ;
 	setAttr ".rpt" -type "double3" 2.4765238579393173e-013 3.0121460455600448e-014 6.7252429546036444e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 298.15160901618816;
+	setAttr ".coi" 463.11207373531033;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -76305,6 +76305,48 @@ createNode locator -n "locatorShape925" -p "locator925";
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
 	setAttr ".gps" 0;
+createNode transform -n "locator926" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape926" -p "locator926";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
+createNode transform -n "locator927" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape927" -p "locator927";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
+createNode transform -n "locator928" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape928" -p "locator928";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
+createNode transform -n "locator929" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape929" -p "locator929";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
+createNode transform -n "locator930" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape930" -p "locator930";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
+createNode transform -n "locator931" -p "pathsOuter2GRP";
+createNode locator -n "locatorShape931" -p "locator931";
+	setAttr -k off ".v";
+	setAttr ".gh" yes;
+	setAttr ".gc" 2;
+	setAttr ".gpr" 20;
+	setAttr ".gps" 0;
 createNode transform -n "regionsGRP" -p "rootGRP";
 createNode transform -n "region1" -p "regionsGRP";
 	setAttr ".t" -type "double3" 20 20 20 ;
@@ -76851,7 +76893,7 @@ createNode lightLinker -s -n "lightLinker1";
 	setAttr -s 13 ".lnk";
 	setAttr -s 15 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	setAttr ".cdl" 69;
+	setAttr ".cdl" 15;
 	setAttr -s 71 ".dli[1:70]"  1 2 3 4 5 6 7 8 
 		9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 		26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 
@@ -77057,7 +77099,7 @@ createNode shadingEngine -n "surfaceShader2SG";
 createNode materialInfo -n "materialInfo5";
 createNode displayLayer -n "pathsInnerLayer";
 	setAttr ".v" no;
-	setAttr ".do" 15;
+	setAttr ".do" 17;
 createNode displayLayer -n "pathsMidLayer";
 	setAttr ".v" no;
 	setAttr ".do" 16;
@@ -77074,20 +77116,17 @@ createNode polySphere -n "polySphere1";
 	setAttr ".sh" 8;
 createNode displayLayer -n "regionsLayer";
 	setAttr ".v" no;
-	setAttr ".do" 17;
+	setAttr ".do" 18;
 createNode displayLayer -n "envOuter2Layer";
 	setAttr ".dt" 2;
-	setAttr ".v" no;
 	setAttr ".do" 7;
 createNode displayLayer -n "envOuter2WireLayer";
 	setAttr ".dt" 2;
 	setAttr ".v" no;
 	setAttr ".do" 6;
 createNode displayLayer -n "pointsOuter2Layer";
-	setAttr ".dt" 2;
 	setAttr ".do" 1;
 createNode displayLayer -n "pointsOuterLayer";
-	setAttr ".dt" 1;
 	setAttr ".v" no;
 	setAttr ".do" 2;
 createNode materialInfo -n "pasted__materialInfo5";
@@ -77134,7 +77173,7 @@ createNode surfaceShader -n "pasted__surfaceShader8";
 	setAttr ".oc" -type "float3" 0.42105746 0.42105746 0.42105746 ;
 createNode displayLayer -n "pathsOuterLayer";
 	setAttr ".v" no;
-	setAttr ".do" 14;
+	setAttr ".do" 15;
 createNode polyBridgeEdge -n "polyBridgeEdge86";
 	setAttr ".c[0]"  0 1 1;
 	setAttr ".dv" 5;
@@ -77679,7 +77718,7 @@ createNode animCurveTL -n "locator276_translateX";
 		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
 		5 5 5 5 5 5 5 5 5 5 5 5;
 createNode displayLayer -n "pathsOuter2Layer";
-	setAttr ".do" 18;
+	setAttr ".do" 14;
 createNode animCurveTL -n "locator891_translateX";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
@@ -78081,9 +78120,135 @@ createNode animCurveTL -n "locator919_translateX";
 		 35 60 40 50 45 40 50 40 55 40 60 50 65 50 70 40 75 40 80 40 85 20 90 20 95 20 100 20;
 	setAttr -s 21 ".kot[0:20]"  5 5 5 5 5 5 5 5 
 		5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator926_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 0 5 40 10 40 15 40 20 0 25 -40 30 -40
+		 35 -40 40 0;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator926_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 90 5 90 10 90 15 90 20 90 25 90 30 90
+		 35 90 40 90;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator926_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 40 5 40 10 0 15 -40 20 -40 25 -40 30 0
+		 35 40 40 40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator927_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 0 5 40 10 40 15 40 20 0 25 -40 30 -40
+		 35 -40 40 0;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator927_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -90 5 -90 10 -90 15 -90 20 -90 25 -90
+		 30 -90 35 -90 40 -90;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator927_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 40 5 40 10 0 15 -40 20 -40 25 -40 30 0
+		 35 40 40 40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator928_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 40 5 60 10 60 15 60 20 60 25 60 30 60
+		 35 60 40 40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator928_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 50 5 50 10 50 15 50 20 0 25 -50 30 -50
+		 35 -50 40 -50;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator928_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 60 5 60 10 40 15 60 20 60 25 60 30 40
+		 35 60 40 60;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator929_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -60 5 -60 10 -40 15 -60 20 -60 25 -60
+		 30 -60 35 -60 40 -40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator929_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 50 5 50 10 50 15 50 20 0 25 -50 30 -50
+		 35 -50 40 -50;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator929_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 40 5 60 10 60 15 60 20 60 25 60 30 40
+		 35 60 40 60;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator930_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -40 5 -60 10 -60 15 -60 20 -60 25 -60
+		 30 -40 35 -60 40 -60;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator930_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 50 5 50 10 50 15 50 20 0 25 -50 30 -50
+		 35 -50 40 -50;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator930_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -60 5 -60 10 -40 15 -60 20 -60 25 -60
+		 30 -60 35 -60 40 -40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator931_translateX";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 60 5 60 10 40 15 60 20 60 25 60 30 60
+		 35 60 40 40;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator931_translateY";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 50 5 50 10 50 15 50 20 0 25 -50 30 -50
+		 35 -50 40 -50;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
+createNode animCurveTL -n "locator931_translateZ";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -40 5 -60 10 -60 15 -60 20 -60 25 -60
+		 30 -40 35 -60 40 -60;
+	setAttr -s 9 ".kot[0:8]"  5 5 5 5 5 5 5 5 
+		5;
 select -ne :time1;
-	setAttr ".o" 86;
-	setAttr ".unw" 86;
+	setAttr ".o" 40;
+	setAttr ".unw" 40;
 select -ne :renderPartition;
 	setAttr -s 15 ".st";
 select -ne :initialShadingGroup;
@@ -78295,6 +78460,24 @@ connectAttr "locator924_translateZ.o" "locator924.tz";
 connectAttr "locator925_translateX.o" "locator925.tx";
 connectAttr "locator925_translateZ.o" "locator925.tz";
 connectAttr "locator925_translateY.o" "locator925.ty";
+connectAttr "locator926_translateX.o" "locator926.tx";
+connectAttr "locator926_translateY.o" "locator926.ty";
+connectAttr "locator926_translateZ.o" "locator926.tz";
+connectAttr "locator927_translateX.o" "locator927.tx";
+connectAttr "locator927_translateY.o" "locator927.ty";
+connectAttr "locator927_translateZ.o" "locator927.tz";
+connectAttr "locator928_translateX.o" "locator928.tx";
+connectAttr "locator928_translateY.o" "locator928.ty";
+connectAttr "locator928_translateZ.o" "locator928.tz";
+connectAttr "locator929_translateX.o" "locator929.tx";
+connectAttr "locator929_translateY.o" "locator929.ty";
+connectAttr "locator929_translateZ.o" "locator929.tz";
+connectAttr "locator930_translateX.o" "locator930.tx";
+connectAttr "locator930_translateY.o" "locator930.ty";
+connectAttr "locator930_translateZ.o" "locator930.tz";
+connectAttr "locator931_translateX.o" "locator931.tx";
+connectAttr "locator931_translateY.o" "locator931.ty";
+connectAttr "locator931_translateZ.o" "locator931.tz";
 connectAttr "regionsLayer.di" "regionsGRP.do";
 connectAttr "polySphere1.out" "regionShape1.i";
 connectAttr ":mentalrayGlobals.msg" ":mentalrayItemsList.glb";
