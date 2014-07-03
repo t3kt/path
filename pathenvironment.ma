@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
 //Name: pathenvironment.ma
-//Last modified: Wed, Jul 02, 2014 06:25:14 PM
+//Last modified: Wed, Jul 02, 2014 08:28:33 PM
 //Codeset: 1252
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -89,23 +89,23 @@ fileInfo "cutIdentifier" "201307170459-880822";
 fileInfo "osv" "Microsoft Windows 7 Ultimate Edition, 64-bit Windows 7 Service Pack 1 (Build 7601)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -166.21771171044682 255.98503824158092 360.55015525554086 ;
-	setAttr ".r" -type "double3" -31.521846547100736 -2182.599999999823 0 ;
-	setAttr ".rp" -type "double3" 5.6843418860808015e-014 -2.8421709430404007e-014 1.4210854715202004e-014 ;
-	setAttr ".rpt" -type "double3" 2.5757035775446522e-013 -4.0669647013648119e-014 
-		7.4943802487462837e-013 ;
+	setAttr ".t" -type "double3" 185.46768900214457 -127.93452699603537 -188.11535507995706 ;
+	setAttr ".r" -type "double3" 150.87815336722406 311.79999999998307 0 ;
+	setAttr ".rp" -type "double3" -1.2204381219035423e-014 -3.6931827171199028e-015 
+		1.1368683772161603e-013 ;
+	setAttr ".rpt" -type "double3" 2.4765238579393173e-013 3.0121460455600448e-014 6.7252429546036444e-013 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 455.34647906545786;
+	setAttr ".coi" 297.14825002141674;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" -3.814697265625e-006 0 -6.3628618922527096 ;
+	setAttr ".tp" -type "double3" -20 0 40 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 15.415320638907662 106.46537504918641 -7.1933538427252834 ;
+	setAttr ".t" -type "double3" -21.72849052965821 106.46537504918643 3.2020725365668383 ;
 	setAttr ".r" -type "double3" -89.999999999999986 -0.00088826111218194505 -2.9118847795218503e-019 ;
 	setAttr ".rp" -type "double3" 0 -7.1054273576010019e-015 0 ;
 	setAttr ".rpt" -type "double3" 6.6882939056622185e-015 9.225549834793807e-015 1.1706250357410273e-014 ;
@@ -113,7 +113,7 @@ createNode camera -s -n "topShape" -p "top";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 64.951905283832915;
-	setAttr ".ow" 165.56304511137571;
+	setAttr ".ow" 375.88003146909375;
 	setAttr ".imn" -type "string" "top";
 	setAttr ".den" -type "string" "top_depth";
 	setAttr ".man" -type "string" "top_mask";
@@ -129,7 +129,7 @@ createNode camera -s -n "frontShape" -p "front";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 64.9519052838329;
-	setAttr ".ow" 321.42123958999861;
+	setAttr ".ow" 368.80520611432269;
 	setAttr ".imn" -type "string" "front";
 	setAttr ".den" -type "string" "front_depth";
 	setAttr ".man" -type "string" "front_mask";
@@ -138,7 +138,7 @@ createNode camera -s -n "frontShape" -p "front";
 	setAttr ".o" yes;
 createNode transform -s -n "side";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 103.89921983323684 47.914080597952399 52.310930485495149 ;
+	setAttr ".t" -type "double3" 103.89921983323686 2.0308568696023528 14.562643597591816 ;
 	setAttr ".r" -type "double3" 0 89.999999999999986 0 ;
 	setAttr ".rp" -type "double3" 0 0 -1.4210854715202004e-014 ;
 	setAttr ".rpt" -type "double3" -1.8696978702304253e-014 0 1.7998456437744886e-014 ;
@@ -146,7 +146,7 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 64.951905283832915;
-	setAttr ".ow" 383.24639359223772;
+	setAttr ".ow" 388.54500596569028;
 	setAttr ".imn" -type "string" "side";
 	setAttr ".den" -type "string" "side_depth";
 	setAttr ".man" -type "string" "side_mask";
@@ -74456,14 +74456,6 @@ createNode transform -n "locator488" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -80 50 -20 ;
 createNode locator -n "locatorShape488" -p "locator488";
 	setAttr -k off ".v";
-createNode transform -n "locator489" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -60 50 20 ;
-createNode locator -n "locatorShape489" -p "locator489";
-	setAttr -k off ".v";
-createNode transform -n "locator490" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -60 50 -20 ;
-createNode locator -n "locatorShape490" -p "locator490";
-	setAttr -k off ".v";
 createNode transform -n "locator491" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -60 -50 20 ;
 createNode locator -n "locatorShape491" -p "locator491";
@@ -74552,73 +74544,17 @@ createNode transform -n "locator512" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -40 50 -10 ;
 createNode locator -n "locatorShape512" -p "locator512";
 	setAttr -k off ".v";
-createNode transform -n "locator513" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -60 -40 ;
-createNode locator -n "locatorShape513" -p "locator513";
-	setAttr -k off ".v";
-createNode transform -n "locator514" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 60 -40 ;
-createNode locator -n "locatorShape514" -p "locator514";
-	setAttr -k off ".v";
-createNode transform -n "locator515" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -60 40 ;
-createNode locator -n "locatorShape515" -p "locator515";
-	setAttr -k off ".v";
-createNode transform -n "locator516" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 60 40 ;
-createNode locator -n "locatorShape516" -p "locator516";
-	setAttr -k off ".v";
-createNode transform -n "locator517" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 50 40 ;
-createNode locator -n "locatorShape517" -p "locator517";
-	setAttr -k off ".v";
-createNode transform -n "locator518" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 50 40 ;
-createNode locator -n "locatorShape518" -p "locator518";
-	setAttr -k off ".v";
-createNode transform -n "locator519" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 50 -40 ;
-createNode locator -n "locatorShape519" -p "locator519";
-	setAttr -k off ".v";
-createNode transform -n "locator520" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 50 40 ;
-createNode locator -n "locatorShape520" -p "locator520";
-	setAttr -k off ".v";
-createNode transform -n "locator521" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 50 40 ;
-createNode locator -n "locatorShape521" -p "locator521";
-	setAttr -k off ".v";
 createNode transform -n "locator522" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -10 50 -40 ;
 createNode locator -n "locatorShape522" -p "locator522";
-	setAttr -k off ".v";
-createNode transform -n "locator523" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 40 40 ;
-createNode locator -n "locatorShape523" -p "locator523";
-	setAttr -k off ".v";
-createNode transform -n "locator524" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 40 40 ;
-createNode locator -n "locatorShape524" -p "locator524";
 	setAttr -k off ".v";
 createNode transform -n "locator525" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -10 40 -40 ;
 createNode locator -n "locatorShape525" -p "locator525";
 	setAttr -k off ".v";
-createNode transform -n "locator526" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 40 40 ;
-createNode locator -n "locatorShape526" -p "locator526";
-	setAttr -k off ".v";
-createNode transform -n "locator527" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 40 40 ;
-createNode locator -n "locatorShape527" -p "locator527";
-	setAttr -k off ".v";
 createNode transform -n "locator528" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 0 40 -40 ;
 createNode locator -n "locatorShape528" -p "locator528";
-	setAttr -k off ".v";
-createNode transform -n "locator531" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 -40 -40 ;
-createNode locator -n "locatorShape531" -p "locator531";
 	setAttr -k off ".v";
 createNode transform -n "locator533" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -10 -50 40 ;
@@ -74631,18 +74567,6 @@ createNode locator -n "locatorShape534" -p "locator534";
 createNode transform -n "locator536" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -10 -40 40 ;
 createNode locator -n "locatorShape536" -p "locator536";
-	setAttr -k off ".v";
-createNode transform -n "locator537" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 -40 -40 ;
-createNode locator -n "locatorShape537" -p "locator537";
-	setAttr -k off ".v";
-createNode transform -n "locator539" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -50 40 ;
-createNode locator -n "locatorShape539" -p "locator539";
-	setAttr -k off ".v";
-createNode transform -n "locator540" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -50 -40 ;
-createNode locator -n "locatorShape540" -p "locator540";
 	setAttr -k off ".v";
 createNode transform -n "locator541" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 -50 -60 ;
@@ -74667,10 +74591,6 @@ createNode locator -n "locatorShape545" -p "locator545";
 createNode transform -n "locator546" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 -30 -80 ;
 createNode locator -n "locatorShape546" -p "locator546";
-	setAttr -k off ".v";
-createNode transform -n "locator547" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 80 ;
-createNode locator -n "locatorShape547" -p "locator547";
 	setAttr -k off ".v";
 createNode transform -n "locator548" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 -10 -80 ;
@@ -74728,45 +74648,9 @@ createNode transform -n "locator561" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 -10 80 ;
 createNode locator -n "locatorShape561" -p "locator561";
 	setAttr -k off ".v";
-createNode transform -n "locator562" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 70 ;
-createNode locator -n "locatorShape562" -p "locator562";
-	setAttr -k off ".v";
-createNode transform -n "locator563" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 10 70 ;
-createNode locator -n "locatorShape563" -p "locator563";
-	setAttr -k off ".v";
-createNode transform -n "locator564" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 70 ;
-createNode locator -n "locatorShape564" -p "locator564";
-	setAttr -k off ".v";
-createNode transform -n "locator565" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 40 ;
-createNode locator -n "locatorShape565" -p "locator565";
-	setAttr -k off ".v";
-createNode transform -n "locator566" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 10 40 ;
-createNode locator -n "locatorShape566" -p "locator566";
-	setAttr -k off ".v";
-createNode transform -n "locator567" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 40 ;
-createNode locator -n "locatorShape567" -p "locator567";
-	setAttr -k off ".v";
 createNode transform -n "locator568" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -40 0 0 ;
 createNode locator -n "locatorShape568" -p "locator568";
-	setAttr -k off ".v";
-createNode transform -n "locator569" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 -40 ;
-createNode locator -n "locatorShape569" -p "locator569";
-	setAttr -k off ".v";
-createNode transform -n "locator570" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 10 -40 ;
-createNode locator -n "locatorShape570" -p "locator570";
-	setAttr -k off ".v";
-createNode transform -n "locator571" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 -10 -40 ;
-createNode locator -n "locatorShape571" -p "locator571";
 	setAttr -k off ".v";
 createNode transform -n "locator572" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 -10 -70 ;
@@ -74783,10 +74667,6 @@ createNode locator -n "locatorShape574" -p "locator574";
 createNode transform -n "locator575" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" -20 0 -70 ;
 createNode locator -n "locatorShape575" -p "locator575";
-	setAttr -k off ".v";
-createNode transform -n "locator576" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -20 0 70 ;
-createNode locator -n "locatorShape576" -p "locator576";
 	setAttr -k off ".v";
 createNode transform -n "locator577" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 0 0 -70 ;
@@ -74964,62 +74844,6 @@ createNode transform -n "locator732" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 20 -30 -80 ;
 createNode locator -n "locatorShape732" -p "locator732";
 	setAttr -k off ".v";
-createNode transform -n "locator734" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 10 0 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape734" -p "locator734";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator737" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 40 -10 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape737" -p "locator737";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator738" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 60 -10 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape738" -p "locator738";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator739" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 60 10 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape739" -p "locator739";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator740" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 60 30 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape740" -p "locator740";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator741" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 0 70 30 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape741" -p "locator741";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator742" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 60 30 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape742" -p "locator742";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
-createNode transform -n "locator743" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" -10 50 30 ;
-	setAttr ".rp" -type "double3" 20 -10 -70 ;
-	setAttr ".sp" -type "double3" 20 -10 -70 ;
-createNode locator -n "locatorShape743" -p "locator743";
-	setAttr -k off ".v";
-	setAttr ".lp" -type "double3" 20 -10 -70 ;
 createNode transform -n "locator745" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 70 10 -20 ;
 createNode locator -n "locatorShape745" -p "locator745";
@@ -75108,18 +74932,6 @@ createNode transform -n "locator767" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 20 60 40 ;
 createNode locator -n "locatorShape767" -p "locator767";
 	setAttr -k off ".v";
-createNode transform -n "locator768" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 20 50 40 ;
-createNode locator -n "locatorShape768" -p "locator768";
-	setAttr -k off ".v";
-createNode transform -n "locator769" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 10 50 40 ;
-createNode locator -n "locatorShape769" -p "locator769";
-	setAttr -k off ".v";
-createNode transform -n "locator770" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 10 40 40 ;
-createNode locator -n "locatorShape770" -p "locator770";
-	setAttr -k off ".v";
 createNode transform -n "locator771" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 20 50 60 ;
 createNode locator -n "locatorShape771" -p "locator771";
@@ -75164,16 +74976,12 @@ createNode transform -n "locator781" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 20 -30 80 ;
 createNode locator -n "locatorShape781" -p "locator781";
 	setAttr -k off ".v";
-createNode transform -n "locator782" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 10 -40 -40 ;
-createNode locator -n "locatorShape782" -p "locator782";
-	setAttr -k off ".v";
 createNode transform -n "locator783" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 10 -50 -40 ;
 createNode locator -n "locatorShape783" -p "locator783";
 	setAttr -k off ".v";
 createNode transform -n "locator784" -p "pointsOuterGRP";
-	setAttr ".t" -type "double3" 50 0 0 ;
+	setAttr ".t" -type "double3" 40 0 0 ;
 createNode locator -n "locatorShape784" -p "locator784";
 	setAttr -k off ".v";
 createNode transform -n "locator785" -p "pointsOuterGRP";
@@ -75195,6 +75003,162 @@ createNode locator -n "locatorShape788" -p "locator788";
 createNode transform -n "locator789" -p "pointsOuterGRP";
 	setAttr ".t" -type "double3" 20 10 -80 ;
 createNode locator -n "locatorShape789" -p "locator789";
+	setAttr -k off ".v";
+createNode transform -n "locator790" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 60 -40 ;
+createNode locator -n "locatorShape790" -p "locator790";
+	setAttr -k off ".v";
+createNode transform -n "locator791" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 50 -40 ;
+createNode locator -n "locatorShape791" -p "locator791";
+	setAttr -k off ".v";
+createNode transform -n "locator792" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 10 50 -40 ;
+createNode locator -n "locatorShape792" -p "locator792";
+	setAttr -k off ".v";
+createNode transform -n "locator793" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 10 40 -40 ;
+createNode locator -n "locatorShape793" -p "locator793";
+	setAttr -k off ".v";
+createNode transform -n "locator794" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 30 -80 ;
+createNode locator -n "locatorShape794" -p "locator794";
+	setAttr -k off ".v";
+createNode transform -n "locator795" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 50 -80 ;
+createNode locator -n "locatorShape795" -p "locator795";
+	setAttr -k off ".v";
+createNode transform -n "locator796" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 0 -70 ;
+createNode locator -n "locatorShape796" -p "locator796";
+	setAttr -k off ".v";
+createNode transform -n "locator797" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 50 -60 ;
+createNode locator -n "locatorShape797" -p "locator797";
+	setAttr -k off ".v";
+createNode transform -n "locator798" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -60 50 20 ;
+createNode locator -n "locatorShape798" -p "locator798";
+	setAttr -k off ".v";
+createNode transform -n "locator799" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -60 50 -20 ;
+createNode locator -n "locatorShape799" -p "locator799";
+	setAttr -k off ".v";
+createNode transform -n "locator800" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -10 50 40 ;
+createNode locator -n "locatorShape800" -p "locator800";
+	setAttr -k off ".v";
+createNode transform -n "locator802" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 20 50 40 ;
+createNode locator -n "locatorShape802" -p "locator802";
+	setAttr -k off ".v";
+createNode transform -n "locator803" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 10 50 40 ;
+createNode locator -n "locatorShape803" -p "locator803";
+	setAttr -k off ".v";
+createNode transform -n "locator804" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 10 40 40 ;
+createNode locator -n "locatorShape804" -p "locator804";
+	setAttr -k off ".v";
+createNode transform -n "locator805" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 0 40 40 ;
+createNode locator -n "locatorShape805" -p "locator805";
+	setAttr -k off ".v";
+createNode transform -n "locator806" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -10 40 40 ;
+createNode locator -n "locatorShape806" -p "locator806";
+	setAttr -k off ".v";
+createNode transform -n "locator807" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -10 -40 -40 ;
+createNode locator -n "locatorShape807" -p "locator807";
+	setAttr -k off ".v";
+createNode transform -n "locator808" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 0 -40 -40 ;
+createNode locator -n "locatorShape808" -p "locator808";
+	setAttr -k off ".v";
+createNode transform -n "locator809" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 10 -40 -40 ;
+createNode locator -n "locatorShape809" -p "locator809";
+	setAttr -k off ".v";
+createNode transform -n "locator810" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 0 -40 40 ;
+createNode locator -n "locatorShape810" -p "locator810";
+	setAttr -k off ".v";
+createNode transform -n "locator811" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 40 -40 0 ;
+createNode locator -n "locatorShape811" -p "locator811";
+	setAttr -k off ".v";
+createNode transform -n "locator812" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -40 -40 0 ;
+createNode locator -n "locatorShape812" -p "locator812";
+	setAttr -k off ".v";
+createNode transform -n "locator813" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" 40 40 0 ;
+createNode locator -n "locatorShape813" -p "locator813";
+	setAttr -k off ".v";
+createNode transform -n "locator814" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -40 40 0 ;
+createNode locator -n "locatorShape814" -p "locator814";
+	setAttr -k off ".v";
+createNode transform -n "locator815" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 50 40 ;
+createNode locator -n "locatorShape815" -p "locator815";
+	setAttr -k off ".v";
+createNode transform -n "locator816" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 60 40 ;
+createNode locator -n "locatorShape816" -p "locator816";
+	setAttr -k off ".v";
+createNode transform -n "locator817" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 10 40 ;
+createNode locator -n "locatorShape817" -p "locator817";
+	setAttr -k off ".v";
+createNode transform -n "locator818" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -10 40 ;
+createNode locator -n "locatorShape818" -p "locator818";
+	setAttr -k off ".v";
+createNode transform -n "locator819" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -50 40 ;
+createNode locator -n "locatorShape819" -p "locator819";
+	setAttr -k off ".v";
+createNode transform -n "locator820" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -60 40 ;
+createNode locator -n "locatorShape820" -p "locator820";
+	setAttr -k off ".v";
+createNode transform -n "locator821" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -60 -40 ;
+createNode locator -n "locatorShape821" -p "locator821";
+	setAttr -k off ".v";
+createNode transform -n "locator822" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -50 -40 ;
+createNode locator -n "locatorShape822" -p "locator822";
+	setAttr -k off ".v";
+createNode transform -n "locator823" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -10 -40 ;
+createNode locator -n "locatorShape823" -p "locator823";
+	setAttr -k off ".v";
+createNode transform -n "locator824" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 10 -40 ;
+createNode locator -n "locatorShape824" -p "locator824";
+	setAttr -k off ".v";
+createNode transform -n "locator825" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 60 -40 ;
+createNode locator -n "locatorShape825" -p "locator825";
+	setAttr -k off ".v";
+createNode transform -n "locator826" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 50 -40 ;
+createNode locator -n "locatorShape826" -p "locator826";
+	setAttr -k off ".v";
+createNode transform -n "locator827" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 10 70 ;
+createNode locator -n "locatorShape827" -p "locator827";
+	setAttr -k off ".v";
+createNode transform -n "locator828" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 0 70 ;
+createNode locator -n "locatorShape828" -p "locator828";
+	setAttr -k off ".v";
+createNode transform -n "locator829" -p "pointsOuterGRP";
+	setAttr ".t" -type "double3" -20 -10 70 ;
+createNode locator -n "locatorShape829" -p "locator829";
 	setAttr -k off ".v";
 createNode transform -n "pointsOuter2GRP" -p "rootGRP";
 createNode transform -n "locator228" -p "pointsOuter2GRP";
@@ -76056,56 +76020,56 @@ createNode locator -n "locatorShape277" -p "locator277";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator278" -p "pathsMidGRP";
 createNode locator -n "locatorShape278" -p "locator278";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator279" -p "pathsMidGRP";
 createNode locator -n "locatorShape279" -p "locator279";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator280" -p "pathsMidGRP";
 createNode locator -n "locatorShape280" -p "locator280";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator281" -p "pathsMidGRP";
 createNode locator -n "locatorShape281" -p "locator281";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator282" -p "pathsMidGRP";
 createNode locator -n "locatorShape282" -p "locator282";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator283" -p "pathsMidGRP";
 createNode locator -n "locatorShape283" -p "locator283";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator284" -p "pathsMidGRP";
 createNode locator -n "locatorShape284" -p "locator284";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "pathsOuterGRP" -p "rootGRP";
 createNode transform -n "locator684" -p "pathsOuterGRP";
 createNode locator -n "locatorShape684" -p "locator684";
@@ -76113,70 +76077,70 @@ createNode locator -n "locatorShape684" -p "locator684";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator685" -p "pathsOuterGRP";
 createNode locator -n "locatorShape685" -p "locator685";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator686" -p "pathsOuterGRP";
 createNode locator -n "locatorShape686" -p "locator686";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator687" -p "pathsOuterGRP";
 createNode locator -n "locatorShape687" -p "locator687";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator688" -p "pathsOuterGRP";
 createNode locator -n "locatorShape688" -p "locator688";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator689" -p "pathsOuterGRP";
 createNode locator -n "locatorShape689" -p "locator689";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator690" -p "pathsOuterGRP";
 createNode locator -n "locatorShape690" -p "locator690";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator691" -p "pathsOuterGRP";
 createNode locator -n "locatorShape691" -p "locator691";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator692" -p "pathsOuterGRP";
 createNode locator -n "locatorShape692" -p "locator692";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "locator693" -p "pathsOuterGRP";
 createNode locator -n "locatorShape693" -p "locator693";
 	setAttr -k off ".v";
 	setAttr ".gh" yes;
 	setAttr ".gc" 2;
 	setAttr ".gpr" 20;
-	setAttr ".gps" 0;
+	setAttr ".gps" 20;
 createNode transform -n "regionsGRP" -p "rootGRP";
 createNode transform -n "region1" -p "regionsGRP";
 	setAttr ".t" -type "double3" 20 20 20 ;
@@ -76723,7 +76687,7 @@ createNode lightLinker -s -n "lightLinker1";
 	setAttr -s 13 ".lnk";
 	setAttr -s 15 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	setAttr ".cdl" 19;
+	setAttr ".cdl" 65;
 	setAttr -s 71 ".dli[1:70]"  1 2 3 4 5 6 7 8 
 		9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 		26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 
@@ -76768,29 +76732,29 @@ createNode script -n "gridpath:uiConfigurationScriptNode";
 		+ "            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\toutlinerPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"graphEditor\" -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n"
 		+ "                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n"
 		+ "                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n"
-		+ "                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n"
-		+ "                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n"
-		+ "                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -stackedCurves 0\n"
-		+ "                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dopeSheetPanel\" -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n"
-		+ "                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n"
-		+ "                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n"
-		+ "                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n"
-		+ "                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                $editorName;\n"
-		+ "\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"clipEditorPanel\" -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n"
-		+ "            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n"
-		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"sequenceEditorPanel\" -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n"
-		+ "                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 1\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n"
-		+ "                -showConnectionToSelected 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n"
-		+ "                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 1\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n"
-		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperShadePanel\" -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"visorPanel\" -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif (\"\" == $panelName) {\n"
-		+ "\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -ignoreAssets 1\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -keyReleaseCommand \"nodeEdKeyReleaseCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -island 0\n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n"
-		+ "                -syncedSelection 1\n                -extendToShapes 1\n                $editorName;;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -ignoreAssets 1\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -keyReleaseCommand \"nodeEdKeyReleaseCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -island 0\n                -showNamespace 1\n"
-		+ "                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -syncedSelection 1\n                -extendToShapes 1\n                $editorName;;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"createNodePanel\" -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Texture Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"polyTexturePlacementPanel\" -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels `;\n"
-		+ "\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"renderWindowPanel\" -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"blendShapePanel\" (localizedPanelLabel(\"Blend Shape\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tblendShapePanel -unParent -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n"
-		+ "\t\tblendShapePanel -edit -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynRelEdPanel\" -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"relationshipPanel\" -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels `;\n"
-		+ "\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"referenceEditorPanel\" -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"componentEditorPanel\" -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels `;\n"
-		+ "\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynPaintScriptedPanelType\" -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"scriptEditorPanel\" -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels `;\n"
-		+ "\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-defaultImage \"\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -clipTime \"on\" \n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n"
+		+ "                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n"
+		+ "                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 1\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showResults \"off\" \n                -showBufferCurves \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n"
+		+ "                -clipTime \"on\" \n                -stackedCurves 0\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -displayNormalized 0\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -classicMode 1\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\tif ($useSceneConfig) {\n\t\tscriptedPanel -e -to $panelName;\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dopeSheetPanel\" -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n"
+		+ "                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n"
+		+ "                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n"
+		+ "                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n"
+		+ "                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n"
+		+ "                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayKeys 1\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"clipEditorPanel\" -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels `;\n"
+		+ "\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"sequenceEditorPanel\" -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n"
+		+ "                -displayKeys 0\n                -displayTangents 0\n                -displayActiveKeys 0\n                -displayActiveKeyTangents 0\n                -displayInfinities 0\n                -autoFit 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperGraphPanel\" -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n"
+		+ "                -showShapes 1\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n"
+		+ "            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 1\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 1\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n"
+		+ "                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperShadePanel\" -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"visorPanel\" -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -ignoreAssets 1\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -keyReleaseCommand \"nodeEdKeyReleaseCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n"
+		+ "                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -island 0\n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -syncedSelection 1\n                -extendToShapes 1\n                $editorName;;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -ignoreAssets 1\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -keyReleaseCommand \"nodeEdKeyReleaseCommand\" \n"
+		+ "                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -island 0\n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -syncedSelection 1\n                -extendToShapes 1\n                $editorName;;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"createNodePanel\" -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Texture Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"polyTexturePlacementPanel\" -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Texture Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"renderWindowPanel\" -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"blendShapePanel\" (localizedPanelLabel(\"Blend Shape\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\tblendShapePanel -unParent -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels ;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tblendShapePanel -edit -l (localizedPanelLabel(\"Blend Shape\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynRelEdPanel\" -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"relationshipPanel\" -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"referenceEditorPanel\" -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"componentEditorPanel\" (localizedPanelLabel(\"Component Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"componentEditorPanel\" -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Component Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"dynPaintScriptedPanelType\" -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n"
+		+ "\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"scriptEditorPanel\" -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-defaultImage \"\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
 		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 1\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 1\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 1\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -maxConstantTransparency 1\\n    -rendererName \\\"base_OpenGL_Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        setFocus `paneLayout -q -p1 $gMainPane`;\n        sceneUIReplacement -deleteRemaining;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 20 -size 200 -divisions 2 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
@@ -76905,6 +76869,7 @@ createNode displayLayer -n "envInnerLayer";
 	setAttr ".v" no;
 	setAttr ".do" 13;
 createNode displayLayer -n "envMidWireLayer";
+	setAttr ".dt" 1;
 	setAttr ".v" no;
 	setAttr ".do" 10;
 createNode displayLayer -n "envOuterWireLayer";
@@ -76939,6 +76904,7 @@ createNode displayLayer -n "regionsLayer";
 	setAttr ".v" no;
 	setAttr ".do" 17;
 createNode displayLayer -n "envOuter2Layer";
+	setAttr ".v" no;
 	setAttr ".do" 7;
 createNode displayLayer -n "envOuter2WireLayer";
 	setAttr ".dt" 2;
@@ -76949,7 +76915,6 @@ createNode displayLayer -n "pointsOuter2Layer";
 	setAttr ".do" 1;
 createNode displayLayer -n "pointsOuterLayer";
 	setAttr ".dt" 1;
-	setAttr ".v" no;
 	setAttr ".do" 2;
 createNode materialInfo -n "pasted__materialInfo5";
 createNode shadingEngine -n "pasted__surfaceShader2SG";
@@ -76994,500 +76959,7 @@ createNode shadingEngine -n "pasted__surfaceShader2SG6";
 createNode surfaceShader -n "pasted__surfaceShader8";
 	setAttr ".oc" -type "float3" 0.42105746 0.42105746 0.42105746 ;
 createNode displayLayer -n "pathsOuterLayer";
-	setAttr ".v" no;
 	setAttr ".do" 14;
-createNode animCurveTL -n "locator684_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
-		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
-		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
-		 145 -70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator684_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
-		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
-		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator684_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
-		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
-		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5;
-createNode animCurveTL -n "locator685_translateY";
-	setAttr ".tan" 5;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
-		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
-		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
-	setAttr -s 30 ".kit[0:29]"  18 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-		2 2 2 2 1;
-	setAttr -s 30 ".kix[29]"  1;
-	setAttr -s 30 ".kiy[29]"  0;
-createNode animCurveTL -n "locator685_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
-		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
-		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5;
-createNode animCurveTL -n "locator685_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
-		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
-		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
-		 145 -70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator686_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
-		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
-		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator686_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
-		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
-		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5;
-createNode animCurveTL -n "locator686_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
-		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
-		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator687_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
-		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
-		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator687_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
-		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
-		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5;
-createNode animCurveTL -n "locator687_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
-		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
-		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator688_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
-		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
-		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator688_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
-		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
-		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator688_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
-		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
-		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator689_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
-		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
-		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator689_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
-		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
-		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator689_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
-		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
-		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
-		 145 -70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator690_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
-		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
-		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator690_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
-		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
-		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator690_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
-		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
-		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
-		 145 -70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator691_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
-		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
-		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator691_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
-		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
-		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator691_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
-		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
-		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
-	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator692_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 40 15 40 20 40 25 20 30 20
-		 35 20 40 10 45 10 50 0 55 -10 60 -10 65 -20 70 -20 75 -20 80 -40 85 -40 90 -40 95 -40
-		 100 -40 105 -40 110 -40 115 -40 120 -40 125 -20 130 -20 135 -20 140 -10 145 -10 150 0
-		 155 10 160 10 165 20 170 20 175 20 180 40 185 40 190 40 195 40 200 40;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator692_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 0 5 10 10 10 15 20 20 20 25 20 30 40 35 40
-		 40 40 45 40 50 40 55 40 60 40 65 40 70 40 75 20 80 20 85 20 90 10 95 10 100 0 105 -10
-		 110 -10 115 -20 120 -20 125 -20 130 -40 135 -40 140 -40 145 -40 150 -40 155 -40 160 -40
-		 165 -40 170 -40 175 -20 180 -20 185 -20 190 -10 195 -10 200 0;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator692_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 50 15 50 20 60 25 60 30 60
-		 35 50 40 50 45 40 50 40 55 40 60 50 65 50 70 60 75 60 80 60 85 50 90 50 95 40 100 40
-		 105 40 110 50 115 50 120 60 125 60 130 60 135 50 140 50 145 40 150 40 155 40 160 50
-		 165 50 170 60 175 60 180 60 185 50 190 50 195 40 200 40;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator693_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 40 15 40 20 40 25 20 30 20
-		 35 20 40 10 45 10 50 0 55 -10 60 -10 65 -20 70 -20 75 -20 80 -40 85 -40 90 -40 95 -40
-		 100 -40 105 -40 110 -40 115 -40 120 -40 125 -20 130 -20 135 -20 140 -10 145 -10 150 0
-		 155 10 160 10 165 20 170 20 175 20 180 40 185 40 190 40 195 40 200 40;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator693_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 -40 5 -40 10 -50 15 -50 20 -60 25 -60
-		 30 -60 35 -50 40 -50 45 -40 50 -40 55 -40 60 -50 65 -50 70 -60 75 -60 80 -60 85 -50
-		 90 -50 95 -40 100 -40 105 -40 110 -50 115 -50 120 -60 125 -60 130 -60 135 -50 140 -50
-		 145 -40 150 -40 155 -40 160 -50 165 -50 170 -60 175 -60 180 -60 185 -50 190 -50 195 -40
-		 200 -40;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator693_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 41 ".ktv[0:40]"  0 0 5 10 10 10 15 20 20 20 25 20 30 40 35 40
-		 40 40 45 40 50 40 55 40 60 40 65 40 70 40 75 20 80 20 85 20 90 10 95 10 100 0 105 -10
-		 110 -10 115 -20 120 -20 125 -20 130 -40 135 -40 140 -40 145 -40 150 -40 155 -40 160 -40
-		 165 -40 170 -40 175 -20 180 -20 185 -20 190 -10 195 -10 200 0;
-	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator277_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 20 5 40 10 40 15 40 20 20 25 0 30 0 35 0
-		 40 -20 45 -40 50 -40 55 -40 60 -20 65 -40 70 -40 75 -40 80 -20 85 0 90 0 95 0 100 20
-		 105 40 110 40;
-	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator277_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0 85 0 90 0 95 0 100 0 105 0 110 0;
-	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator277_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 0 5 0 10 20 15 40 20 40 25 40 30 20 35 40
-		 40 40 45 40 50 20 55 0 60 0 65 0 70 -20 75 -40 80 -40 85 -40 90 -20 95 -40 100 -40
-		 105 -40 110 0;
-	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator278_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 -20 5 -20 10 -20 15 -20 20 -20 25 -40
-		 30 -40 35 -40 40 -20 45 -20 50 -20 55 -20 60 -20;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator278_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
-		 40 -20 45 0 50 -20 55 -20 60 0;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator278_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 40 5 40 10 20 15 20 20 20 25 20 30 20
-		 35 20 40 20 45 20 50 20 55 40 60 40;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator279_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 40 5 40 10 20 15 20 20 20 25 20 30 20
-		 35 20 40 20 45 20 50 20 55 40 60 40;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator279_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
-		 40 -20 45 0 50 -20 55 -20 60 0;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator279_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 20 5 20 10 20 15 20 20 20 25 40 30 40
-		 35 40 40 20 45 20 50 20 55 20 60 20;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator280_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
-		 40 -20 45 0 50 -20 55 -20 60 0;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator280_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 -40 5 -40 10 -20 15 -20 20 -20 25 -20
-		 30 -20 35 -20 40 -20 45 -20 50 -20 55 -40 60 -40;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator280_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 20 5 20 10 20 15 20 20 20 25 40 30 40
-		 35 40 40 20 45 20 50 20 55 20 60 20;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator281_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 -20 5 -20 10 -20 15 -20 20 -20 25 -40
-		 30 -40 35 -40 40 -20 45 -20 50 -20 55 -20 60 -20;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator281_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 -40 5 -40 10 -20 15 -20 20 -20 25 -20
-		 30 -20 35 -20 40 -20 45 -20 50 -20 55 -40 60 -40;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator281_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
-		 40 -20 45 0 50 -20 55 -20 60 0;
-	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5;
-createNode animCurveTL -n "locator282_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 5 0 10 0 15 0 20 20 25 20 30 20 35 0
-		 40 -20 45 -20 50 -20 55 0 60 0 65 0 70 0 75 0 80 -20 85 -20 90 -20 95 0 100 20 105 20
-		 110 20 115 0 120 0 125 0 130 0;
-	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5;
-createNode animCurveTL -n "locator282_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 5 20 10 40 15 40 20 40 25 20 30 40 35 40
-		 40 40 45 20 50 40 55 40 60 40 65 20 70 40 75 40 80 40 85 20 90 40 95 40 100 40 105 20
-		 110 40 115 40 120 40 125 20 130 0;
-	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5;
-createNode animCurveTL -n "locator282_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 40 5 40 10 40 15 20 20 20 25 20 30 20
-		 35 20 40 20 45 20 50 20 55 20 60 0 65 0 70 0 75 -20 80 -20 85 -20 90 -20 95 -20 100 -20
-		 105 -20 110 -20 115 -20 120 -40 125 -40 130 -40;
-	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5;
-createNode animCurveTL -n "locator283_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 40 5 40 10 40 15 20 20 0 25 -20 30 -40
-		 35 -40 40 -40 45 -40 50 -40 55 -20 60 0 65 20 70 40 75 40 80 40;
-	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator283_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 0 5 20 10 40 15 40 20 40 25 40 30 40 35 20
-		 40 0 45 -20 50 -40 55 -40 60 -40 65 -40 70 -40 75 -20 80 0;
-	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator283_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0;
-	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator284_translateZ";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 0 5 0 10 0 15 0 20 -20 25 -20 30 -20 35 0
-		 40 20 45 20 50 20 55 0 60 0 65 0 70 -20 75 -20 80 -20 85 0 90 20 95 20 100 20 105 0
-		 110 0 115 0 120 0;
-	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator284_translateY";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 0 5 -20 10 -40 15 -40 20 -40 25 -20 30 -40
-		 35 -40 40 -40 45 -20 50 -40 55 -40 60 -40 65 -40 70 -40 75 -20 80 -40 85 -40 90 -40
-		 95 -20 100 -40 105 -40 110 -40 115 -20 120 0;
-	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator284_translateX";
-	setAttr ".tan" 16;
-	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 40 5 40 10 40 15 20 20 20 25 20 30 20
-		 35 20 40 20 45 20 50 20 55 20 60 0 65 -20 70 -20 75 -20 80 -20 85 -20 90 -20 95 -20
-		 100 -20 105 -20 110 -40 115 -40 120 -40;
-	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator276_translateX";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 37 ".ktv[0:36]"  0 0 5 20 10 20 15 20 20 0 25 -20 30 -20
-		 35 -20 40 0 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0 85 20 90 20 95 20 100 0 105 -20
-		 110 -20 115 -20 120 0 125 20 130 20 135 0 140 -20 145 0 150 0 155 0 160 0 165 0 170 0
-		 180 0 185 0;
-	setAttr -s 37 ".kot[0:36]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator276_translateY";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 37 ".ktv[0:36]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 -20 50 -20 55 -20 60 0 65 20 70 20 75 20 80 0 85 0 90 0 95 -20 100 -20 105 -20
-		 110 0 115 20 120 20 125 20 130 0 135 0 140 0 145 0 150 20 155 0 160 -20 165 0 170 0
-		 180 0 185 0;
-	setAttr -s 37 ".kot[0:36]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5;
-createNode animCurveTL -n "locator276_translateZ";
-	setAttr ".tan" 2;
-	setAttr ".wgt" no;
-	setAttr -s 38 ".ktv[0:37]"  0 20 5 20 10 0 15 -20 20 -20 25 -20 30 0
-		 35 20 40 20 45 20 50 0 55 -20 60 -20 65 -20 70 0 75 20 80 20 85 20 90 0 95 0 100 0
-		 105 0 110 0 115 0 120 0 125 0 130 0 135 0 140 0 145 0 150 0 155 0 160 0 165 0 170 -20
-		 175 0 180 0 185 20;
-	setAttr -s 38 ".kot[0:37]"  5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-		5 5 5 5 5 5 5 5 5 5 5 5 5;
 createNode polyBridgeEdge -n "polyBridgeEdge86";
 	setAttr ".c[0]"  0 1 1;
 	setAttr ".dv" 5;
@@ -77535,13 +77007,505 @@ createNode groupId -n "groupId203";
 	setAttr ".ihi" 0;
 createNode displayLayer -n "envExtrasLayer";
 	setAttr ".dt" 2;
+	setAttr ".v" no;
 	setAttr ".do" 5;
 createNode groupId -n "groupId209";
 	setAttr ".ihi" 0;
 createNode groupId -n "groupId210";
 	setAttr ".ihi" 0;
+createNode animCurveTL -n "locator692_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 50 15 50 20 60 25 60 30 60
+		 35 50 40 50 45 40 50 40 55 40 60 50 65 50 70 60 75 60 80 60 85 50 90 50 95 40 100 40
+		 105 40 110 50 115 50 120 60 125 60 130 60 135 50 140 50 145 40 150 40 155 40 160 50
+		 165 50 170 60 175 60 180 60 185 50 190 50 195 40 200 40;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator692_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 0 5 10 10 10 15 20 20 20 25 20 30 40 35 40
+		 40 40 45 40 50 40 55 40 60 40 65 40 70 40 75 20 80 20 85 20 90 10 95 10 100 0 105 -10
+		 110 -10 115 -20 120 -20 125 -20 130 -40 135 -40 140 -40 145 -40 150 -40 155 -40 160 -40
+		 165 -40 170 -40 175 -20 180 -20 185 -20 190 -10 195 -10 200 0;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator692_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 40 15 40 20 40 25 20 30 20
+		 35 20 40 10 45 10 50 0 55 -10 60 -10 65 -20 70 -20 75 -20 80 -40 85 -40 90 -40 95 -40
+		 100 -40 105 -40 110 -40 115 -40 120 -40 125 -20 130 -20 135 -20 140 -10 145 -10 150 0
+		 155 10 160 10 165 20 170 20 175 20 180 40 185 40 190 40 195 40 200 40;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator693_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 0 5 10 10 10 15 20 20 20 25 20 30 40 35 40
+		 40 40 45 40 50 40 55 40 60 40 65 40 70 40 75 20 80 20 85 20 90 10 95 10 100 0 105 -10
+		 110 -10 115 -20 120 -20 125 -20 130 -40 135 -40 140 -40 145 -40 150 -40 155 -40 160 -40
+		 165 -40 170 -40 175 -20 180 -20 185 -20 190 -10 195 -10 200 0;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator693_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 -40 5 -40 10 -50 15 -50 20 -60 25 -60
+		 30 -60 35 -50 40 -50 45 -40 50 -40 55 -40 60 -50 65 -50 70 -60 75 -60 80 -60 85 -50
+		 90 -50 95 -40 100 -40 105 -40 110 -50 115 -50 120 -60 125 -60 130 -60 135 -50 140 -50
+		 145 -40 150 -40 155 -40 160 -50 165 -50 170 -60 175 -60 180 -60 185 -50 190 -50 195 -40
+		 200 -40;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator693_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 41 ".ktv[0:40]"  0 40 5 40 10 40 15 40 20 40 25 20 30 20
+		 35 20 40 10 45 10 50 0 55 -10 60 -10 65 -20 70 -20 75 -20 80 -40 85 -40 90 -40 95 -40
+		 100 -40 105 -40 110 -40 115 -40 120 -40 125 -20 130 -20 135 -20 140 -10 145 -10 150 0
+		 155 10 160 10 165 20 170 20 175 20 180 40 185 40 190 40 195 40 200 40;
+	setAttr -s 41 ".kot[0:40]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator691_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
+		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
+		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator691_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
+		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
+		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator691_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
+		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
+		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator690_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
+		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
+		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
+		 145 -70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator690_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
+		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
+		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator690_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
+		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
+		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator689_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
+		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
+		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
+		 145 -70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator689_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
+		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
+		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator689_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
+		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
+		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator688_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
+		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
+		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator688_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
+		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
+		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator688_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 20 15 20 20 20 25 20 30 20 35 20
+		 40 0 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20
+		 105 -20 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator687_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
+		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
+		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator687_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
+		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
+		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5;
+createNode animCurveTL -n "locator687_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
+		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
+		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator686_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
+		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
+		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator686_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
+		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
+		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5;
+createNode animCurveTL -n "locator686_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 40 5 70 10 70 15 70 20 40 25 70 30 80
+		 35 80 40 80 45 80 50 80 55 60 60 40 65 40 70 40 75 40 80 40 85 40 90 40 95 60 100 80
+		 105 80 110 80 115 80 120 80 125 70 130 40 135 70 140 70 145 70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator685_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
+		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
+		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
+		 145 -70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator685_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
+		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
+		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5;
+createNode animCurveTL -n "locator685_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 10 20 10 25 10 30 10 35 30
+		 40 30 45 30 50 50 55 50 60 50 65 50 70 40 75 40 80 40 85 50 90 50 95 50 100 50 105 30
+		 110 30 115 30 120 10 125 10 130 10 135 10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator684_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 29 ".ktv[0:28]"  0 0 5 0 10 20 20 20 25 20 30 20 35 20 40 0
+		 45 20 50 20 55 20 60 20 65 10 70 10 75 0 80 -10 85 -10 90 -20 95 -20 100 -20 105 -20
+		 110 0 115 -20 120 -20 125 -20 130 -20 135 -20 140 -20 145 0;
+	setAttr -s 29 ".kot[0:28]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5;
+createNode animCurveTL -n "locator684_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 0 5 0 10 0 15 -10 20 -10 25 -10 30 -10
+		 35 -30 40 -30 45 -30 50 -50 55 -50 60 -50 65 -50 70 -40 75 -40 80 -40 85 -50 90 -50
+		 95 -50 100 -50 105 -30 110 -30 115 -30 120 -10 125 -10 130 -10 135 -10 140 0 145 0;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator684_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 30 ".ktv[0:29]"  0 -40 5 -70 10 -70 15 -70 20 -40 25 -70
+		 30 -80 35 -80 40 -80 45 -80 50 -80 55 -60 60 -40 65 -40 70 -40 75 -40 80 -40 85 -40
+		 90 -40 95 -60 100 -80 105 -80 110 -80 115 -80 120 -80 125 -70 130 -40 135 -70 140 -70
+		 145 -70;
+	setAttr -s 30 ".kot[0:29]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator277_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 23 ".ktv[0:22]"  0 0 5 0 10 20 15 40 20 40 25 40 30 20 35 40
+		 40 40 45 40 50 20 55 0 60 0 65 0 70 -20 75 -40 80 -40 85 -40 90 -20 95 -40 100 -40
+		 105 -40 110 0;
+	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator277_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 23 ".ktv[0:22]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
+		 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0 85 0 90 0 95 0 100 0 105 0 110 0;
+	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator277_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 23 ".ktv[0:22]"  0 20 5 40 10 40 15 40 20 20 25 0 30 0 35 0
+		 40 -20 45 -40 50 -40 55 -40 60 -20 65 -40 70 -40 75 -40 80 -20 85 0 90 0 95 0 100 20
+		 105 40 110 40;
+	setAttr -s 23 ".kot[0:22]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator278_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 40 5 40 10 20 15 20 20 20 25 20 30 20
+		 35 20 40 20 45 20 50 20 55 40 60 40;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator278_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
+		 40 -20 45 0 50 -20 55 -20 60 0;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator278_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 -20 5 -20 10 -20 15 -20 20 -20 25 -40
+		 30 -40 35 -40 40 -20 45 -20 50 -20 55 -20 60 -20;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator279_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 20 5 20 10 20 15 20 20 20 25 40 30 40
+		 35 40 40 20 45 20 50 20 55 20 60 20;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator279_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
+		 40 -20 45 0 50 -20 55 -20 60 0;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator279_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 40 5 40 10 20 15 20 20 20 25 20 30 20
+		 35 20 40 20 45 20 50 20 55 40 60 40;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator280_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 20 5 20 10 20 15 20 20 20 25 40 30 40
+		 35 40 40 20 45 20 50 20 55 20 60 20;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator280_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 -40 5 -40 10 -20 15 -20 20 -20 25 -20
+		 30 -20 35 -20 40 -20 45 -20 50 -20 55 -40 60 -40;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator280_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
+		 40 -20 45 0 50 -20 55 -20 60 0;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator281_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 0 5 20 10 20 15 0 20 20 25 20 30 0 35 -20
+		 40 -20 45 0 50 -20 55 -20 60 0;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator281_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 -40 5 -40 10 -20 15 -20 20 -20 25 -20
+		 30 -20 35 -20 40 -20 45 -20 50 -20 55 -40 60 -40;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator281_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 13 ".ktv[0:12]"  0 -20 5 -20 10 -20 15 -20 20 -20 25 -40
+		 30 -40 35 -40 40 -20 45 -20 50 -20 55 -20 60 -20;
+	setAttr -s 13 ".kot[0:12]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5;
+createNode animCurveTL -n "locator282_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 27 ".ktv[0:26]"  0 40 5 40 10 40 15 20 20 20 25 20 30 20
+		 35 20 40 20 45 20 50 20 55 20 60 0 65 0 70 0 75 -20 80 -20 85 -20 90 -20 95 -20 100 -20
+		 105 -20 110 -20 115 -20 120 -40 125 -40 130 -40;
+	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5;
+createNode animCurveTL -n "locator282_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 27 ".ktv[0:26]"  0 0 5 20 10 40 15 40 20 40 25 20 30 40 35 40
+		 40 40 45 20 50 40 55 40 60 40 65 20 70 40 75 40 80 40 85 20 90 40 95 40 100 40 105 20
+		 110 40 115 40 120 40 125 20 130 0;
+	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5;
+createNode animCurveTL -n "locator282_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 27 ".ktv[0:26]"  0 0 5 0 10 0 15 0 20 20 25 20 30 20 35 0
+		 40 -20 45 -20 50 -20 55 0 60 0 65 0 70 0 75 0 80 -20 85 -20 90 -20 95 0 100 20 105 20
+		 110 20 115 0 120 0 125 0 130 0;
+	setAttr -s 27 ".kot[0:26]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5;
+createNode animCurveTL -n "locator283_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 17 ".ktv[0:16]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
+		 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0;
+	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator283_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 17 ".ktv[0:16]"  0 0 5 20 10 40 15 40 20 40 25 40 30 40 35 20
+		 40 0 45 -20 50 -40 55 -40 60 -40 65 -40 70 -40 75 -20 80 0;
+	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator283_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 17 ".ktv[0:16]"  0 40 5 40 10 40 15 20 20 0 25 -20 30 -40
+		 35 -40 40 -40 45 -40 50 -40 55 -20 60 0 65 20 70 40 75 40 80 40;
+	setAttr -s 17 ".kot[0:16]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator284_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 25 ".ktv[0:24]"  0 40 5 40 10 40 15 20 20 20 25 20 30 20
+		 35 20 40 20 45 20 50 20 55 20 60 0 65 -20 70 -20 75 -20 80 -20 85 -20 90 -20 95 -20
+		 100 -20 105 -20 110 -40 115 -40 120 -40;
+	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator284_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 25 ".ktv[0:24]"  0 0 5 -20 10 -40 15 -40 20 -40 25 -20 30 -40
+		 35 -40 40 -40 45 -20 50 -40 55 -40 60 -40 65 -40 70 -40 75 -20 80 -40 85 -40 90 -40
+		 95 -20 100 -40 105 -40 110 -40 115 -20 120 0;
+	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator284_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 25 ".ktv[0:24]"  0 0 5 0 10 0 15 0 20 -20 25 -20 30 -20 35 0
+		 40 20 45 20 50 20 55 0 60 0 65 0 70 -20 75 -20 80 -20 85 0 90 20 95 20 100 20 105 0
+		 110 0 115 0 120 0;
+	setAttr -s 25 ".kot[0:24]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator276_translateZ";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 38 ".ktv[0:37]"  0 20 5 20 10 0 15 -20 20 -20 25 -20 30 0
+		 35 20 40 20 45 20 50 0 55 -20 60 -20 65 -20 70 0 75 20 80 20 85 20 90 0 95 0 100 0
+		 105 0 110 0 115 0 120 0 125 0 130 0 135 0 140 0 145 0 150 0 155 0 160 0 165 0 170 -20
+		 175 0 180 0 185 20;
+	setAttr -s 38 ".kot[0:37]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator276_translateY";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 37 ".ktv[0:36]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
+		 45 -20 50 -20 55 -20 60 0 65 20 70 20 75 20 80 0 85 0 90 0 95 -20 100 -20 105 -20
+		 110 0 115 20 120 20 125 20 130 0 135 0 140 0 145 0 150 20 155 0 160 -20 165 0 170 0
+		 180 0 185 0;
+	setAttr -s 37 ".kot[0:36]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5;
+createNode animCurveTL -n "locator276_translateX";
+	setAttr ".tan" 2;
+	setAttr ".wgt" no;
+	setAttr -s 37 ".ktv[0:36]"  0 0 5 20 10 20 15 20 20 0 25 -20 30 -20
+		 35 -20 40 0 45 0 50 0 55 0 60 0 65 0 70 0 75 0 80 0 85 20 90 20 95 20 100 0 105 -20
+		 110 -20 115 -20 120 0 125 20 130 20 135 0 140 -20 145 0 150 0 155 0 160 0 165 0 170 0
+		 180 0 185 0;
+	setAttr -s 37 ".kot[0:36]"  5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+		5 5 5 5 5 5 5 5 5 5 5 5;
 select -ne :time1;
-	setAttr ".o" 0;
+	setAttr ".o" 50;
+	setAttr ".unw" 50;
 select -ne :renderPartition;
 	setAttr -s 15 ".st";
 select -ne :initialShadingGroup;
