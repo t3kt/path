@@ -16,4 +16,4 @@ time_pulse_width	.5	codev2	s16	1		time pulse width
 web_rate	.5	codev2	s3			web rate
 env_opacity	.5	codev2	s30		1	env opacity
 env_extraopacity	.5	codev2	s26		1	extras opacity
-general_overlay_opacity	0	codev2	s20		1	overlay opacity
+env_wireopacity	.5	codev2	s22		1	wire opacity
