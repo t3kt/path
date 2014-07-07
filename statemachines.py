@@ -62,7 +62,7 @@ class StateMachine:
 		self.chooser = chooser
 
 	def getState(self, name, check=False):
-		state = self.states[name]
+		state = self.states[name] if name is not None else None
 		if check and state is None:
 			raise Exception('State not found: "%s"' % (name,))
 		return state
