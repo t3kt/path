@@ -17,3 +17,4 @@ web_rate	.5	codev2	s3			web rate
 env_opacity	.5	codev2	s30		1	env opacity
 env_extraopacity	.5	codev2	s26		1	extras opacity
 env_wireopacity	.5	codev2	s22		1	wire opacity
+env_edgeopacity	.2	codev2	s18		1	edge opacity
