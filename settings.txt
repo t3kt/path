@@ -5,13 +5,14 @@ envwiregeopath	/_/envmodel/rootGRP/environmentsWireGRP/*
 envextrageopath	/_/envmodel/rootGRP/envExtrasGRP/*
 pointgrouppath	/_/envmodel/rootGRP/points*GRP
 connectgrouppath	/_/envmodel/rootGRP/connectors*GRP
+pointlightpath	/_/envmodel/rootGRP/lightsGRP/*
 animtakepath	/_/envmodel/takes/Take_001
 regionspath	/_/envmodel/rootGRP/regionsGRP
 envmodelfile	pathenvironment_1.fbx
 envimportgeofolder	Import/pathenvironment_1.fbx/Geo/
 envimportanimfolder	Import/pathenvironment_1.fbx/Chan/
 envimporttexfolder	
-envimportlights	0
+envimportlights	1
 envimportcameras	0
 envimportmergegeo	1
 envimportgpudeform	1
