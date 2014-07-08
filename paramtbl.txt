@@ -17,4 +17,5 @@ env_opacity	.5	codev2	s30		1	env opacity
 env_extraopacity	.5	codev2	s26		1	extras opacity
 env_wireopacity	.5	codev2	s22		1	wire opacity
 env_edgeopacity	.2	codev2	s18		1	edge opacity
-cam_spinrate	.6	codev2	s2			cam spin rate
+cam_spinrate	.6	codev2	s3			cam spin rate
+cam_fovamount	.5	codev2	s6		1	cam fov amount
