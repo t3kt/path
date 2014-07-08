@@ -79,6 +79,8 @@ def getAllConnections():
 	return sconnections
 
 def setCurrent(name):
+	if name is None:
+		return
 	sm = get(check=True)
 	dbglog('trying to set state to "%s"' % (name,))
 	state = sm.setCurrent(name=name)
